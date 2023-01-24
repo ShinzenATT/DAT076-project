@@ -76,10 +76,50 @@ header img {
 
 #vote-btns .form-floating{
     width: 330px;
-    margin: auto;
-    margin-top: 5px;
+    margin: 5px auto auto;
 }
 
 #vote-btns textarea:hover, #vote-btns textarea:focus {
     border-color: rgba(255, 255, 255, 0.7);
+}
+
+#results {
+    color: black;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+}
+
+#results > a {
+    font-size: 1.5em;
+    position: absolute;
+    left: 20px;
+    color: inherit;
+}
+
+#results >  div {
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0;
+    display: inline-block;
+    height: 2.8em;
+    position: relative;
+}
+
+#results > div > p {
+    position: absolute;
+    min-width: 55px;
+}
+
+#comment-section {
+    padding: 10px;
+}
+
+#comment-section > .col {
+    font-size: 2em;
+    min-width: 200px;
+    margin: 20px;
+    font-weight: bold;
 }

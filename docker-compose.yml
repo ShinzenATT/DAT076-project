@@ -4,7 +4,7 @@ services:
   mysql:
     build: server/db
     environment:
-      MYSQL_DATABASE: mysql
+      MYSQL_DATABASE: db
       MYSQL_ALLOW_EMPTY_PASSWORD: true
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql

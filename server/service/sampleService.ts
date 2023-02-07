@@ -1,4 +1,4 @@
-import { Task } from "../model/task";
+import { Task } from "../model/event";
 
 export interface ITaskService {
     // Returns the list of all tasks in the user's todo list

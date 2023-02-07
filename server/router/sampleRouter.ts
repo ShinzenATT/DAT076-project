@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { makeTaskService } from "../service/sampleService";
-import { Task } from "../model/task";
+import { Task } from "../model/event";
 
 const taskService = makeTaskService();
 

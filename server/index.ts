@@ -1,12 +1,15 @@
-import express from "express";
+import { app } from "./start";
 
-import {taskRouter} from "./router/sampleRouter";
+/**
+ * App Variables
+ */
 
-const app = express();
 const PORT : number = 8080;
 
-app.use(express.json());
-app.use("/task", taskRouter);
+
+/**
+ * Server activation
+ */
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);

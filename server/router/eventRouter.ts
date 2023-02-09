@@ -1,41 +1,55 @@
 import express, { Request, Response } from "express";
-import { makeTaskService } from "../service/sampleService";
-import { Task } from "../model/event";
+import { makeEventService } from "../service/eventService";
+import { Event } from "../model/event";
 
-const taskService = makeTaskService();
+const eventService = makeEventService();
 
-export const taskRouter = express.Router();
+export const eventRouter = express.Router();
 
-taskRouter.get("/", async (
+eventRouter.get("/", async (
     req: Request<{}, {}, {}>,
-    res: Response<Array<Task> | String>
+    res: Response<Array<Event> | String>
 ) => {
     try {
-        const tasks = await taskService.getTasks();
-        res.status(200).send("hello world");
+        const events = await eventService.getEvents();
+        res.status(200).send(events);
     } catch (e: any) {
         res.status(500).send(e.message);
     }
 });
 
-taskRouter.put("/", async (
-    req: Request<{}, {}, { description : string }>,
-    res: Response<Task | string>
+eventRouter.put("/", async (
+    req: Request<{}, {}, {
+        organizer : string,
+        name : string,
+        location : string,
+        start : Date,
+        stop : Date,
+        description : string,
+        image : string,
+        id : number
+    }>,
+    res: Response<Event | string>
 ) => {
     try {
-        const description = req.body.description;
-        if (typeof(description) !== "string") {
-            res.status(400).send(`Bad PUT call to ${req.originalUrl} --- description has type ${typeof(description)}`);
-            return;
-        }
-        const newTask = await taskService.addTask(description);
-        res.status(201).send(newTask);
+        const newEvent = await eventService.createEvent(
+            req.body.organizer,
+            req.body.name,
+            req.body.location,
+            req.body.start,
+            req.body.stop,
+            req.body.description,
+            req.body.image,
+            req.body.id);
+        res.status(201).send(newEvent);
     } catch (e: any) {
         res.status(500).send(e.message);
     }
-})
+});
 
-taskRouter.put("/:id", async (
+
+/*
+eventRouter.put("/:id", async (
     req: Request<{ id: string }, {}, { done: boolean }>,
     res: Response<string>
 ) => {
@@ -71,3 +85,4 @@ taskRouter.put("/:id", async (
         res.status(500).send(e.message);
     }
 });
+*/

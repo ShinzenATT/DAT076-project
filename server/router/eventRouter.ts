@@ -39,8 +39,7 @@ eventRouter.post("/", async (
             req.body.start,
             req.body.stop,
             req.body.description,
-            req.body.image,
-            req.body.id);
+            req.body.image);
         res.status(201).send(newEvent);
     } catch (e: any) {
         res.status(500).send(e.message);

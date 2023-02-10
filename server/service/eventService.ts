@@ -15,7 +15,22 @@ export interface IEventService {
         description : string,
         image : string,
         id : number
-    ) : Promise<Event>
+    ) : Promise<Event>;
+
+    editEvent(
+        organizer : string,
+        name : string,
+        location : string,
+        start : Date,
+        stop : Date,
+        description : string,
+        image : string,
+        id : number
+    ) : Promise<Event>;
+
+    deleteEvent(
+        id : number
+    ) : Promise<boolean>;
 }
 
 class EventService implements IEventService {
@@ -38,6 +53,56 @@ class EventService implements IEventService {
         const event = new Event(organizer, name, location, start, stop, description, image, id);
         this.events.push(event);
         return event;
+    }
+
+    async deleteEvent(
+        id : number
+    ) : Promise<any>{
+        try {
+            this.events.splice(id, 1);
+        }catch (e){
+            return false;
+        }
+        return true
+
+
+    }
+
+    async editEvent(
+        organizer : string,
+        name : string,
+        location : string,
+        start : Date,
+        stop : Date,
+        description : string,
+        image : string,
+        id : number
+    ) : Promise<any> {
+
+        try{
+
+            for(let i = 0; i < this.events.length; i++){
+                let current = this.events[i];
+
+                if(current.id == id) {
+
+                    current.organizer = organizer;
+                    current.name = name;
+                    current.location = location;
+                    current.start = start;
+                    current.stop = stop;
+                    current.description = description;
+                    current.imagePath = image;
+
+                    this.events[i] = current;
+                    return current;
+                }
+            }
+        } catch (e) {
+            reportError(e)
+        }
+
+        return undefined;
     }
 }
 

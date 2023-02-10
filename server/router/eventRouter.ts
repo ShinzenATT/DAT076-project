@@ -18,13 +18,13 @@ eventRouter.get("/", async (
     }
 });
 
-eventRouter.put("/", async (
+eventRouter.post("/", async (
     req: Request<{}, {}, {
         organizer : string,
         name : string,
         location : string,
-        start : Date,
-        stop : Date,
+        start : string,
+        stop : string,
         description : string,
         image : string,
         id : number
@@ -39,8 +39,7 @@ eventRouter.put("/", async (
             req.body.start,
             req.body.stop,
             req.body.description,
-            req.body.image,
-            req.body.id);
+            req.body.image);
         res.status(201).send(newEvent);
     } catch (e: any) {
         res.status(500).send(e.message);

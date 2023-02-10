@@ -18,13 +18,13 @@ eventRouter.get("/", async (
     }
 });
 
-eventRouter.put("/", async (
+eventRouter.post("/", async (
     req: Request<{}, {}, {
         organizer : string,
         name : string,
         location : string,
-        start : Date,
-        stop : Date,
+        start : string,
+        stop : string,
         description : string,
         image : string,
         id : number

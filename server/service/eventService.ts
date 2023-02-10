@@ -10,8 +10,8 @@ export interface IEventService {
         organizer : string,
         name : string,
         location : string,
-        start : Date,
-        stop : Date,
+        start : string,
+        stop : string,
         description : string,
         image : string,
         id : number
@@ -29,13 +29,13 @@ class EventService implements IEventService {
         organizer : string,
         name : string,
         location : string,
-        start : Date,
-        stop : Date,
+        start : string,
+        stop : string,
         description : string,
         image : string,
         id : number
     ) : Promise<Event> {
-        const event = new Event(organizer, name, location, start, stop, description, image, id);
+        const event = new Event(organizer, name, location, new Date(start), new Date(stop), description, image, id);
         this.events.push(event);
         return event;
     }

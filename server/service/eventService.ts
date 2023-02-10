@@ -53,10 +53,12 @@ class EventService implements IEventService {
         return event;
     }
 
+    // TODO do not return false on error, throw error instead
     async deleteEvent(
         id : number
     ) : Promise<any>{
         try {
+            // TODO check for empty array instead of  exception
             this.events.splice(id, 1);
         }catch (e){
             return false;
@@ -75,32 +77,22 @@ class EventService implements IEventService {
         description : string,
         image : string,
         id : number
-    ) : Promise<any> {
-
-        try{
-
-            for(let i = 0; i < this.events.length; i++){
-                let current = this.events[i];
-
-                if(current.id == id) {
-
-                    current.organizer = organizer;
-                    current.name = name;
-                    current.location = location;
-                    current.start = start;
-                    current.stop = stop;
-                    current.description = description;
-                    current.imagePath = image;
-
-                    this.events[i] = current;
-                    return current;
-                }
+    ) : Promise<Event> {
+            const current = this.events.find(e => e.id === id)
+            if(current == null){
+                // TODO maybe use boolean return instead
+                throw new Error("Event  not found")
             }
-        } catch (e) {
-            reportError(e)
-        }
 
-        return undefined;
+            current.organizer = organizer;
+            current.name = name;
+            current.location = location;
+            current.start = start;
+            current.stop = stop;
+            current.description = description;
+            current.imagePath = image;
+
+            return current;
     }
 }
 

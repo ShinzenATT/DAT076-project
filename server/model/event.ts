@@ -3,27 +3,48 @@ export class Event {
     name : string;
     location : string;
     start : Date;
-    stop : Date;
+    end : Date;
     description : string;
     imagePath : string;
     readonly id : number;
 
-    constructor(organizer : string,
-                name : string,
-                location : string,
-                start : Date,
-                stop : Date,
-                description : string,
-                image : string,
-                id : number,
-                ) {
-        this.organizer = organizer;
-        this.name = name;
-        this.location = location;
-        this.start = start;
-        this.stop = stop;
-        this.description = description;
-        this.imagePath = image;
-        this.id = id;
+    constructor(data: Event | EventSerialized) {
+        this.organizer = data.organizer;
+        this.name = data.name;
+        this.location = data.location;
+        this.description = data.description;
+        this.imagePath = data.imagePath;
+        this.id = data.id;
+
+        if(typeof data.start === "string"){
+            let d = new Date(data.start);
+            if(isNaN(d.getTime())){
+                throw new Error("start string is not a valid date format: " + data.start);
+            }
+            this.start = d;
+        } else{
+            this.start = data.start;
+        }
+
+        if(typeof data.end === "string"){
+            let d = new Date(data.end);
+            if(isNaN(d.getTime())){
+                throw new Error("end string is not a valid date format: " + data.end);
+            }
+            this.end = d;
+        } else{
+            this.end = data.end;
+        }
     }
+}
+
+export interface EventSerialized {
+    organizer : string;
+    name : string;
+    location : string;
+    start : string;
+    end : string;
+    description : string;
+    imagePath : string;
+    id : number;
 }

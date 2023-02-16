@@ -1,4 +1,4 @@
-import { Event } from "../model/event";
+import { Event, EventSerialized } from "../model/event";
 
 export interface IEventService {
 
@@ -7,29 +7,16 @@ export interface IEventService {
 
     // Creates a new event and adds it to the servers event-array
     createEvent(
-        organizer : string,
-        name : string,
-        location : string,
-        start : string,
-        stop : string,
-        description : string,
-        image : string
+        event: EventSerialized
     ) : Promise<Event>
 
     editEvent(
-        organizer : string,
-        name : string,
-        location : string,
-        start : Date,
-        stop : Date,
-        description : string,
-        image : string,
-        id : number
+        event: Event
     ) : Promise<Event>;
 
     deleteEvent(
         id : number
-    ) : Promise<boolean>;
+    ) : Promise<void>;
 }
 
 class EventService implements IEventService {
@@ -40,57 +27,41 @@ class EventService implements IEventService {
     }
 
     async createEvent(
-        organizer : string,
-        name : string,
-        location : string,
-        start : string,
-        stop : string,
-        description : string,
-        image : string
+       data: EventSerialized
     ) : Promise<Event> {
-        const event = new Event(organizer, name, location, new Date(start), new Date(stop), description, image, this.events.length);
+        data.id = this.events.length;
+        const event = new Event(data);
         this.events.push(event);
         return event;
     }
 
-    // TODO do not return false on error, throw error instead
+
     async deleteEvent(
         id : number
-    ) : Promise<any>{
-        try {
-            // TODO check for empty array instead of  exception
-            this.events.splice(id, 1);
-        }catch (e){
-            return false;
+    ) : Promise<void>{
+        let result = this.events.findIndex(e => e.id === id);
+
+        if(result === -1){
+            throw new Error("Event not found");
         }
-        return true
-
-
+        this.events.splice(result, 1);
     }
 
     async editEvent(
-        organizer : string,
-        name : string,
-        location : string,
-        start : Date,
-        stop : Date,
-        description : string,
-        image : string,
-        id : number
+        newEvent: Event
     ) : Promise<Event> {
-            const current = this.events.find(e => e.id === id)
+            const current = this.events.find(e => e.id === newEvent.id)
             if(current == null){
-                // TODO maybe use boolean return instead
                 throw new Error("Event  not found")
             }
 
-            current.organizer = organizer;
-            current.name = name;
-            current.location = location;
-            current.start = start;
-            current.stop = stop;
-            current.description = description;
-            current.imagePath = image;
+            current.organizer = newEvent.organizer;
+            current.name = newEvent.name;
+            current.location = newEvent.location;
+            current.start = newEvent.start;
+            current.end = newEvent.end;
+            current.description = newEvent.description;
+            current.imagePath = newEvent.imagePath;
 
             return current;
     }

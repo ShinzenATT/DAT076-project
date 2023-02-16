@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { makeEventService } from "../service/eventService";
-import { Event } from "../model/event";
+import { Event, EventSerialized } from "../model/event";
 
 const eventService = makeEventService();
 
@@ -19,32 +19,35 @@ eventRouter.get("/", async (
 });
 
 eventRouter.post("/", async (
-    req: Request<{}, {}, {
-        organizer : string,
-        name : string,
-        location : string,
-        start : string,
-        stop : string,
-        description : string,
-        image : string,
-        id : number
-    }>,
+    req: Request<{}, {}, EventSerialized>,
     res: Response<Event | string>
 ) => {
     try {
-        const newEvent = await eventService.createEvent(
-            req.body.organizer,
-            req.body.name,
-            req.body.location,
-            req.body.start,
-            req.body.stop,
-            req.body.description,
-            req.body.image);
+        const newEvent = await eventService.createEvent(req.body);
         res.status(201).send(newEvent);
     } catch (e: any) {
-        res.status(500).send(e.message);
+        res.status(400).send(e.message);
     }
 });
+
+eventRouter.put('/', async (req: Request<{},{}, EventSerialized>, res: Response<Event | string>) => {
+    try {
+        let event = await eventService.editEvent(new Event(req.body));
+        res.send(event);
+    } catch (e: any) {
+        res.status(400).send(e.message);
+    }
+});
+
+eventRouter.delete('/', async (req: Request<{},{}, {id: number}>, res: Response ) => {
+    try {
+        await eventService.deleteEvent(req.body.id);
+    } catch (error: any) {
+        console.warn(error.message)
+    }
+
+    res.send();
+})
 
 
 /*

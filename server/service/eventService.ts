@@ -52,7 +52,7 @@ class EventService implements IEventService {
     ) : Promise<Event> {
             const current = this.events.find(e => e.id === newEvent.id)
             if(current == null){
-                throw new Error("Event  not found")
+                throw new Error("Event not found")
             }
 
             current.organizer = newEvent.organizer;

@@ -6,6 +6,11 @@
 
 // Components
 import App from './App.vue'
+// @ts-ignore
+import VCalendar from 'v-calendar';
+import 'v-calendar/dist/style.css';
+
+// Use plugin with defaults
 
 // Composables
 import { createApp } from 'vue'
@@ -14,6 +19,7 @@ import { createApp } from 'vue'
 import { registerPlugins } from '@/plugins'
 
 const app = createApp(App)
+app.use(VCalendar, {})
 
 registerPlugins(app)
 

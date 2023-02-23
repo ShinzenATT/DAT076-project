@@ -24,7 +24,7 @@ test("Event routes", async () => {
         start: new Date().toJSON(),
         stop: new Date().toJSON(),
         location: "Lindholmen",
-        imagePath: '/'
+        imagepath: '/'
     };
 
     const post = await fetch("http://localhost:8080/event", {
@@ -39,7 +39,7 @@ test("Event routes", async () => {
     event.name = "in testing";
     event.description = "woah";
     event.location = "anywhere else";
-    event.imagePath = "/image.png";
+    event.imagepath = "/image.png";
     event.stop = new Date().toJSON();
 
     const put = await fetch("http://localhost:8080/event", {

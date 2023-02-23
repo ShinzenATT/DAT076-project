@@ -32,7 +32,7 @@ eventRouter.post("/", async (
 
 eventRouter.put('/', async (req: Request<{},{}, EventSerialized>, res: Response<Event | string>) => {
     try {
-        let event = await eventService.editEvent(new Event(req.body));
+        let event = await eventService.editEvent(req.body);
         res.send(event);
     } catch (e: any) {
         res.status(400).send(e.message);

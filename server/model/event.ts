@@ -1,3 +1,5 @@
+import {Events} from "../db/generated";
+
 export class Event {
     organizer : string;
     name : string;
@@ -5,15 +7,15 @@ export class Event {
     start : Date;
     stop : Date;
     description : string;
-    imagePath : string;
+    imagepath : string;
     readonly id : number;
 
     constructor(data: Event | EventSerialized) {
-        this.organizer = data.organizer;
+        this.organizer = data.organizer.toString();
         this.name = data.name;
         this.location = data.location;
         this.description = data.description;
-        this.imagePath = data.imagePath;
+        this.imagepath = data.imagepath;
         this.id = data.id;
 
         if(typeof data.start === "string"){
@@ -39,12 +41,12 @@ export class Event {
 }
 
 export interface EventSerialized {
-    organizer : string;
+    organizer : string | number;
     name : string;
     location : string;
     start : string;
     stop : string;
     description : string;
-    imagePath : string;
+    imagepath : string;
     id : number;
 }

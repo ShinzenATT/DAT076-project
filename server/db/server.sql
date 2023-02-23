@@ -1,20 +1,17 @@
 CREATE TABLE Accounts (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(64) NOT NULL,
+    id SERIAL NOT NULL PRIMARY KEY ,
+    name TEXT NOT NULL,
     email VARCHAR(64) NOT NULL,
-    password VARCHAR(64) NOT NULL,
-    PRIMARY KEY (id)
+    password VARCHAR(64) NOT NULL
 );
 
 CREATE TABLE Events (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(64) NOT NULL,
-    start TIMESTAMP NOT NULL ,
-    end TIMESTAMP NOT NULL,
-    description VARCHAR(500) NOT NULL DEFAULT '',
-    location VARCHAR(100) NOT NULL,
-    hostId int NOT NULL,
-    imagePath VARCHAR(200),
-    PRIMARY KEY (id),
-    FOREIGN KEY (hostId) REFERENCES Accounts(id)
+    id SERIAL NOT NULL PRIMARY KEY ,
+    name TEXT NOT NULL,
+    start TIMESTAMP NOT NULL,
+    stop TIMESTAMP NOT NULL,
+    description TEXT NOT NULL DEFAULT '',
+    location TEXT NOT NULL,
+    hostId int NOT NULL REFERENCES Accounts,
+    imagePath VARCHAR(200)
 );

@@ -12,7 +12,7 @@ test("Create event", async () => {
         description: 'desc',
         organizer: 'H-tek',
         start: new Date().toJSON(),
-        end: new Date().toJSON(),
+        stop: new Date().toJSON(),
         location: "Lindholmen",
         imagePath: '/'
     };
@@ -32,7 +32,7 @@ test("Get event", async () => {
         description: 'desc',
         organizer: 'H-tek',
         start: new Date(),
-        end: new Date(),
+        stop: new Date(),
         location: "Lindholmen",
         imagePath: '/'
     });
@@ -48,7 +48,7 @@ test("Edit event", async () => {
         description: 'desc',
         organizer: 'H-tek',
         start: new Date(),
-        end: new Date(),
+        stop: new Date(),
         location: "Lindholmen",
         imagePath: '/'
     });
@@ -68,7 +68,7 @@ test("Invalid timestamp test", async () => {
         description: 'desc',
         organizer: 'H-tek',
         start: "totally not a time",
-        end: "totally not a time",
+        stop: "totally not a time",
         location: "Lindholmen",
         imagePath: '/'
     };
@@ -87,7 +87,7 @@ test("Invalid timestamp test", async () => {
         description: 'desc',
         organizer: 'H-tek',
         start: new Date().toJSON(),
-        end: new Date().toJSON(),
+        stop: new Date().toJSON(),
         location: "Lindholmen",
         imagePath: '/'
     };
@@ -108,7 +108,7 @@ test("Event not found test", async () => {
         description: 'desc',
         organizer: 'H-tek',
         start: new Date().toJSON(),
-        end: new Date().toJSON(),
+        stop: new Date().toJSON(),
         location: "Lindholmen",
         imagePath: '/'
     };
@@ -124,7 +124,7 @@ test("Event not found test", async () => {
     }
     expect(trip).toBeTruthy();
     trip = false;
-    
+
     try {
         await service.deleteEvent(0);
     } catch (error: any) {
@@ -141,7 +141,7 @@ test("Delete event", async () => {
         description: 'desc',
         organizer: 'H-tek',
         start: new Date(),
-        end: new Date(),
+        stop: new Date(),
         location: "Lindholmen",
         imagePath: '/'
     });
@@ -159,7 +159,7 @@ test("Full event service test", async () => {
         description: 'desc',
         organizer: 'H-tek',
         start: new Date().toJSON(),
-        end: new Date().toJSON(),
+        stop: new Date().toJSON(),
         location: "Lindholmen",
         imagePath: '/'
     };
@@ -171,7 +171,7 @@ test("Full event service test", async () => {
     expect((await service.getEvents())[0]).toStrictEqual(new Event(event));
 
     event.description = "wah";
-    event.end = new Date().toJSON();
+    event.stop = new Date().toJSON();
     event.location = "not here";
 
     await service.editEvent(new Event(event));

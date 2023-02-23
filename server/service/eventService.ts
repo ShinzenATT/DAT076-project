@@ -59,7 +59,7 @@ class EventService implements IEventService {
             current.name = newEvent.name;
             current.location = newEvent.location;
             current.start = newEvent.start;
-            current.end = newEvent.end;
+            current.stop = newEvent.stop;
             current.description = newEvent.description;
             current.imagePath = newEvent.imagePath;
 

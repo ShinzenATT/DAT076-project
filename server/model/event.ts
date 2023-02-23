@@ -3,7 +3,7 @@ export class Event {
     name : string;
     location : string;
     start : Date;
-    end : Date;
+    stop : Date;
     description : string;
     imagePath : string;
     readonly id : number;
@@ -26,14 +26,14 @@ export class Event {
             this.start = data.start;
         }
 
-        if(typeof data.end === "string"){
-            let d = new Date(data.end);
+        if(typeof data.stop === "string"){
+            let d = new Date(data.stop);
             if(isNaN(d.getTime())){
-                throw new Error("end string is not a valid date format: " + data.end);
+                throw new Error("end string is not a valid date format: " + data.stop);
             }
-            this.end = d;
+            this.stop = d;
         } else{
-            this.end = data.end;
+            this.stop = data.stop;
         }
     }
 }
@@ -43,7 +43,7 @@ export interface EventSerialized {
     name : string;
     location : string;
     start : string;
-    end : string;
+    stop : string;
     description : string;
     imagePath : string;
     id : number;

@@ -1,7 +1,7 @@
 <template>
-  <v-app-bar class="d-flex justify-md-space-between">
-  <v-col cols="auto">
 
+  <v-app-bar id="header" class="d-flex justify-md-space-between" elevation="0">
+  <v-col cols="auto">
       <router-link to="/">
         <v-img
           contain
@@ -22,21 +22,22 @@
             class="d-flex justify-md-space-around"
             multiple>
 
-            <v-btn text large cols="auto">
+            <v-btn text large cols="auto" class="headerButton" depressed variant="text">
               Sektionen
             </v-btn>
 
-            <v-btn text large cols="auto">
+            <v-btn text large cols="auto" class="headerButton" depressed variant="text">
               Student
             </v-btn>
 
-            <v-btn text large cols="auto">
+            <v-btn text large cols="auto" class="headerButton" depressed variant="text">
               Företag
             </v-btn>
 
-            <v-btn text large cols="auto">
+            <v-btn text large cols="auto" class="headerButton" depressed variant="text">
               Kontakt
             </v-btn>
+
 
 
           </v-btn-group>
@@ -52,3 +53,26 @@
 
 
 </script>
+
+
+<style>
+
+.headerButton>* {
+  font-family: 'Lemon/Milk', sans-serif;
+  font-weight: bolder;
+  filter: blur(0);
+  background: none;
+  color: #E0218A;
+}
+.blurredBg {
+  background: rgba(255,255,255, 50%);
+  filter: blur(1px);
+  height: 64px;
+  width: 100%;
+}
+
+#header {
+  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.3);
+}
+</style>

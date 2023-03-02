@@ -62,7 +62,8 @@
   font-weight: bolder;
   filter: blur(0);
   background: none;
-  color: #E0218A;
+  color: white;
+  text-shadow: 1px 1px 1px #000000
 }
 .blurredBg {
   background: rgba(255,255,255, 50%);

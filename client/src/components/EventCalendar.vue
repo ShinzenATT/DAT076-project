@@ -21,7 +21,7 @@
 
     >
       <v-img
-        :src="event.imagePath"
+        :src="event.imagepath"
         cover
         height="200px"
       ></v-img>
@@ -74,6 +74,7 @@
 <script lang="ts">
 
 import {defineComponent} from "vue";
+import {stringify} from "querystring";
 
 export default defineComponent({
 
@@ -89,7 +90,7 @@ export default defineComponent({
         start: new Date(2023, 1, 20),
         stop: new Date(2023, 1, 21),
         description: "It's gonne be very najs",
-        imagePath: "src/assets/DKV.png",
+        imagepath: "src/assets/DKV.png",
         id: 1
       },
       {
@@ -99,7 +100,7 @@ export default defineComponent({
         start: new Date(2023, 1, 20),
         stop: new Date(2023, 1, 21),
         description: "It's gonne be very najs",
-        imagePath: "src/assets/jesustarzan.jpg",
+        imagepath: "src/assets/jesustarzan.jpg",
         id: 1
       },
       {
@@ -109,7 +110,7 @@ export default defineComponent({
         start : new Date(2023, 1, 22),
         stop : new Date(2023, 1, 23),
         description : "It's gonne be very najs IGEN",
-        imagePath : "src/assets/H6.png",
+        imagepath : "src/assets/H6.png",
         id : 2
       }
     ],
@@ -122,8 +123,9 @@ export default defineComponent({
       method: 'GET',
 
     });
-    const lul = await response.json();
-    console.log("this is events" + lul);
+    const res = await response.json();
+    this.events = res;
+    console.log("this is events " + res);
   },
 
   computed: {

@@ -1,30 +1,35 @@
 <template>
   <div id="main">
-    <h1 style="text-align: center;
+    <v-card flat style="background-image: url('/groupimg.jpg');
+                        width: 100%;
+                        background-position: center center;
+                        margin: auto;
+                        top: -65px;
+                        height: 75vh;
+                        border-radius: 0;
+                        background-size: cover, contain">
+
+      <h1 style="text-align: center;
                   color: #E0218A;
                   position: relative;
                   font-family: 'Lemon/Milk', sans-serif;
                   font-weight: bold;
-                  font-size: medium"
-    > Välkommen till H-sektionen! </h1>
-    <v-card flat style="background-image: url('/groupimg.jpg');
-                        width: 85%;
-                        background-position: center center;
-                        top: 30px;
-                        margin: auto;
-                        height: 100vh;
-                        border-radius: 50px;
-                        background-size: cover, contain">
+                  top: 100px;
+                  text-shadow: 2px 2px 2px #000000;
+                  font-size: x-large"
+      > Välkommen till H-sektionen! </h1>
+
 
 
     </v-card>
+
     <v-spacer></v-spacer>
 
   </div>
   <div style="text-align: center;
                         background-position: center;
                         z-index: 100;
-                        top: 100px;
+                        top: -125px;
                         position: relative;
                         background-size: cover, contain;
                         padding: 30px;
@@ -84,6 +89,7 @@
                         background-size: cover, contain;
                         background-position: center;
                         z-index: 11;
+                        top: -200px;
                         clip-path: polygon(50% 0, 100% 0, 100% 90%, 50% 100%, 0 90%, 0 0);
                         max-width: 4000px;
                         position: relative;
@@ -108,7 +114,7 @@
 
 
   </v-container>
-  <v-container style="  top: -100px;
+  <v-container style="  top: -300px;
                         z-index: 0;
                         background-color: #E0218A;
                         background-size: cover;
@@ -195,7 +201,7 @@
                         max-width: 4000px;
                         position: relative;
                         height: 120vh;
-                        top: -100px;
+                        top: -300px;
                         padding: 0;"
 
                id="kommitteer"
@@ -263,7 +269,7 @@ import SlideShow from "@/components/SlideShow.vue";
 }
 
 .grow {
-  transition: transform 0.5s cubic-bezier(0,0,0.2,1) 0ms;
+  transition: transform 0.5s ease-in 0ms;
   background-image: none;
 }
 .grow:hover {

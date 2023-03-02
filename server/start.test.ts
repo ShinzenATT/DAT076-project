@@ -22,14 +22,14 @@ test("Event routes", async () => {
         description: 'desc',
         organizer: 'H-tek',
         start: new Date().toJSON(),
-        end: new Date().toJSON(),
+        stop: new Date().toJSON(),
         location: "Lindholmen",
-        imagePath: '/'
+        imagepath: '/'
     };
 
     const post = await fetch("http://localhost:8080/event", {
-        method: "POST", 
-        headers: { "Content-Type": "application/json" }, 
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(event)
     });
     expect(post.status).toStrictEqual(201);
@@ -39,12 +39,12 @@ test("Event routes", async () => {
     event.name = "in testing";
     event.description = "woah";
     event.location = "anywhere else";
-    event.imagePath = "/image.png";
-    event.end = new Date().toJSON();
+    event.imagepath = "/image.png";
+    event.stop = new Date().toJSON();
 
     const put = await fetch("http://localhost:8080/event", {
-        method: "PUT", 
-        headers: { "Content-Type": "application/json" }, 
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(event)
     });
     expect(put.status).toStrictEqual(200);
@@ -52,8 +52,8 @@ test("Event routes", async () => {
     expect(await (await fetch("http://localhost:8080/event")).json()).toStrictEqual([event]);
 
     const del = await fetch("http://localhost:8080/event", {
-        method: "DELETE", 
-        headers: { "Content-Type": "application/json" }, 
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({id: 0})
     });
     expect(del.status).toStrictEqual(200);

@@ -1,19 +1,21 @@
+import {Events} from "../db/generated";
+
 export class Event {
     organizer : string;
     name : string;
     location : string;
     start : Date;
-    end : Date;
+    stop : Date;
     description : string;
-    imagePath : string;
+    imagepath : string;
     readonly id : number;
 
     constructor(data: Event | EventSerialized) {
-        this.organizer = data.organizer;
+        this.organizer = data.organizer.toString();
         this.name = data.name;
         this.location = data.location;
         this.description = data.description;
-        this.imagePath = data.imagePath;
+        this.imagepath = data.imagepath;
         this.id = data.id;
 
         if(typeof data.start === "string"){
@@ -26,25 +28,25 @@ export class Event {
             this.start = data.start;
         }
 
-        if(typeof data.end === "string"){
-            let d = new Date(data.end);
+        if(typeof data.stop === "string"){
+            let d = new Date(data.stop);
             if(isNaN(d.getTime())){
-                throw new Error("end string is not a valid date format: " + data.end);
+                throw new Error("end string is not a valid date format: " + data.stop);
             }
-            this.end = d;
+            this.stop = d;
         } else{
-            this.end = data.end;
+            this.stop = data.stop;
         }
     }
 }
 
 export interface EventSerialized {
-    organizer : string;
+    organizer : string | number;
     name : string;
     location : string;
     start : string;
-    end : string;
+    stop : string;
     description : string;
-    imagePath : string;
+    imagepath : string;
     id : number;
 }

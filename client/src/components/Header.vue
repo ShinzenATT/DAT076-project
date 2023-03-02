@@ -1,7 +1,7 @@
 <template>
-  <v-app-bar class="d-flex justify-md-space-between">
-  <v-col cols="auto">
 
+  <v-app-bar id="header" class="d-flex justify-md-space-between" elevation="0">
+  <v-col cols="auto">
       <router-link to="/">
         <v-img
           contain
@@ -131,3 +131,27 @@ import {defineComponent} from "vue";
   })
 
 </script>
+
+
+<style>
+
+.headerButton>* {
+  font-family: 'Lemon/Milk', sans-serif;
+  font-weight: bolder;
+  filter: blur(0);
+  background: none;
+  color: white;
+  text-shadow: 1px 1px 1px #000000
+}
+.blurredBg {
+  background: rgba(255,255,255, 50%);
+  filter: blur(1px);
+  height: 64px;
+  width: 100%;
+}
+
+#header {
+  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.3);
+}
+</style>

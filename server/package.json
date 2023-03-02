@@ -12,6 +12,8 @@
   "dependencies": {
     "@databases/pg": "^5.4.1",
     "@databases/pg-typed": "^4.4.0",
+    "@types/cors": "^2.8.13",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "node-fetch": "^2.6.9"

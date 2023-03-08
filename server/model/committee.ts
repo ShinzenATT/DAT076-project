@@ -1,6 +1,9 @@
+import {Associationtype} from "../db/generated/_enums";
+
 export class Committee{
+    readonly id: number
     name: string
-    type: string
+    type: Associationtype
     email: string
     description: string | null
     facebook: string | null
@@ -10,8 +13,9 @@ export class Committee{
     banner_url: string | null
 
     constructor(data: {
+        id: number
         name: string,
-        type: string,
+        type: Associationtype,
         email: string,
         description?: string | null,
         facebook?: string | null,
@@ -20,6 +24,7 @@ export class Committee{
         logo_url?: string | null,
         banner_url?: string | null
     }) {
+        this.id = data.id
         this.name = data.name
         this.type = data.type
         this.email = data.email

@@ -9,18 +9,29 @@ export interface ICommitteeService{
 
     editCommittee(data: Committee): Promise<Committee>
 
-    removeCommittee(name: string, deleteAccount:boolean): Promise<void>
+    removeCommittee(id: number, deleteAccount:boolean): Promise<void>
 }
 
-class CommitteeService implements ICommitteeService{
-    editCommittee(data: Committee): Promise<Committee> {
-        return Promise.resolve(undefined);
+export class CommitteeService implements ICommitteeService{
+    async editCommittee(data: Committee): Promise<Committee> {
+        const res = committees(db).insertOrUpdate(['id'], {
+            id: data.id,
+            type: data.type,
+            description: data.description,
+            facebook: data.facebook,
+            instagram: data.instagram,
+            website: data.website,
+            logo_url: data.logo_url,
+            banner_url: data.banner_url
+        })
+        return new Committee({...data, ...res})
     }
 
     async getCommitteeInfo(name: string): Promise<Committee> {
         const acc = await accounts(db).findOneRequired({name: name})
         const res = await committees(db).findOneRequired({id: acc.id})
         return new Committee({
+            id: acc.id,
             name: acc.name,
             email: acc.email,
             type: res.type,
@@ -46,8 +57,11 @@ class CommitteeService implements ICommitteeService{
         });
     }
 
-    removeCommittee(name: string, deleteAccount: boolean): Promise<void> {
-        return Promise.resolve(undefined);
+    async removeCommittee(id: number, deleteAccount: boolean): Promise<void> {
+        await committees(db).delete({id})
+        if(deleteAccount){
+            await accounts(db).delete({id, admin: false})
+        }
     }
 
 }

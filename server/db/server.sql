@@ -6,6 +6,12 @@ CREATE TABLE Accounts (
     admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
+CREATE TABLE SessionToken(
+    account INT NOT NULL REFERENCES Accounts,
+    token uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    expires timestamp NOT NULL DEFAULT (current_timestamp + (180 * interval '1 minute'))
+);
+
 CREATE TYPE AssociationType AS ENUM('utskott', 'forening', 'kommittee', 'utomstaende');
 
 CREATE TABLE Committees(

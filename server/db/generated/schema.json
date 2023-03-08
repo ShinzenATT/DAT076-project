@@ -88,7 +88,7 @@
         "name": "type",
         "isNullable": false,
         "hasDefault": false,
-        "typeId": 16399,
+        "typeId": 16411,
         "typeName": "ASSOCIATIONTYPE"
       },
       {
@@ -158,6 +158,32 @@
         "hasDefault": false,
         "typeId": 1114,
         "typeName": "TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "name": "sessiontoken",
+    "columns": [
+      {
+        "name": "account",
+        "isNullable": false,
+        "hasDefault": false,
+        "typeId": 23,
+        "typeName": "INTEGER"
+      },
+      {
+        "name": "expires",
+        "isNullable": false,
+        "hasDefault": true,
+        "typeId": 1114,
+        "typeName": "TIMESTAMP"
+      },
+      {
+        "name": "token",
+        "isNullable": false,
+        "hasDefault": true,
+        "typeId": 2950,
+        "typeName": "UUID"
       }
     ]
   }

@@ -36,6 +36,10 @@ const routes = [
         component: () => import(/* webpackChunkName: "committees" */ '@/views/Committees.vue')
       },
       {
+        path: '/kommitteer/:name',
+        component: () => import(/* webpackChunkName: "committee info" */ '@/views/CommitteeInfo.vue')
+      },
+      {
         path: '/styret',
         name: 'Styret',
         // route level code-splitting

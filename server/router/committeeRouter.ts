@@ -14,7 +14,7 @@ router.get('/:name', async (req: Request<{name: string}, {}, {}>, res: Response)
     try {
         res.send(await committeeService.getCommitteeInfo(req.params.name))
     } catch (e){
-        res.status(400).send(e)
+        res.status(404).send(e)
     }
 })
 

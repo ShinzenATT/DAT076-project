@@ -16,6 +16,7 @@ CREATE TYPE AssociationType AS ENUM('utskott', 'forening', 'kommittee', 'utomsta
 
 CREATE TABLE Committees(
     id INT PRIMARY KEY REFERENCES Accounts,
+    fullname TEXT,
     description TEXT,
     facebook TEXT,
     instagram TEXT,

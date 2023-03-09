@@ -16,6 +16,7 @@ export class CommitteeService implements ICommitteeService{
     async editCommittee(data: Committee): Promise<Committee> {
         const res = committees(db).insertOrUpdate(['id'], {
             id: data.id,
+            fullname: data.fullname,
             type: data.type,
             description: data.description,
             facebook: data.facebook,
@@ -33,6 +34,7 @@ export class CommitteeService implements ICommitteeService{
         return new Committee({
             id: acc.id,
             name: acc.name,
+            fullname: res.fullname,
             email: acc.email,
             type: res.type,
             description: res.description,

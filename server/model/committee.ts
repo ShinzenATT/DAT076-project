@@ -3,6 +3,7 @@ import {Associationtype} from "../db/generated/_enums";
 export class Committee{
     readonly id: number
     name: string
+    fullname: string
     type: Associationtype
     email: string
     description: string | null
@@ -15,6 +16,7 @@ export class Committee{
     constructor(data: {
         id: number
         name: string,
+        fullname?: string | null,
         type: Associationtype,
         email: string,
         description?: string | null,
@@ -26,6 +28,7 @@ export class Committee{
     }) {
         this.id = data.id
         this.name = data.name
+        this.fullname = data.fullname ?? data.name
         this.type = data.type
         this.email = data.email
         this.description = data.description ?? null

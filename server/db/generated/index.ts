@@ -12,12 +12,14 @@ import Accounts, {Accounts_InsertParameters} from './accounts'
 import Committees, {Committees_InsertParameters} from './committees'
 import Events, {Events_InsertParameters} from './events'
 import Sessiontoken, {Sessiontoken_InsertParameters} from './sessiontoken'
+import Styret, {Styret_InsertParameters} from './styret'
 
 interface DatabaseSchema {
   accounts: {record: Accounts, insert: Accounts_InsertParameters};
   committees: {record: Committees, insert: Committees_InsertParameters};
   events: {record: Events, insert: Events_InsertParameters};
   sessiontoken: {record: Sessiontoken, insert: Sessiontoken_InsertParameters};
+  styret: {record: Styret, insert: Styret_InsertParameters};
 }
 export default DatabaseSchema;
 
@@ -35,4 +37,6 @@ export type {
   Events_InsertParameters,
   Sessiontoken,
   Sessiontoken_InsertParameters,
+  Styret,
+  Styret_InsertParameters,
 }

@@ -35,3 +35,12 @@ CREATE TABLE Events (
     hostId int NOT NULL REFERENCES Accounts,
     imagePath VARCHAR(200)
 );
+
+CREATE TABLE Styret (
+    id SERIAL NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    post TEXT NOT NULL,
+    email TEXT NOT NULL,
+    description TEXT NOT NULL DEFAULT '',
+    imagepath VARCHAR(200)
+);

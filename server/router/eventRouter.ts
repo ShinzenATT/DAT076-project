@@ -48,7 +48,7 @@ eventRouter.delete('/', async (req: Request<{},{}, {id: number}>, res: Response 
     }
 
     res.send();
-})
+});
 
 
 /*

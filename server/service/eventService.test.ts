@@ -34,6 +34,14 @@ test("Get event", async () => {
     expect(await service.getEvents()).toStrictEqual([new Event(event)]);
 });
 
+/**
+ * TODO:
+ * This class shouldn't be reliant on a local variable placed in Service.events
+ * This class should only access public classes in Service.
+ * You test a module through its public interface.
+ * An example here is line 69
+ */
+
 test("Create event", async () => {
     const event: EventSerialized = {
         id: 1,

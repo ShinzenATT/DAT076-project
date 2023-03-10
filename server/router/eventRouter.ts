@@ -4,7 +4,8 @@ import { Event, EventSerialized } from "../model/event";
 
 const eventService = makeEventService();
 
-export const eventRouter = express.Router();
+const eventRouter = express.Router();
+export default eventRouter;
 
 eventRouter.get("/", async (
     req: Request<{}, {}, {}>,

@@ -14,7 +14,7 @@ const db = createConnectionPool({
 export default db;
 
 // You can list whatever tables you actually have here:
-const {accounts, events, styret} = tables<DatabaseSchema>({
+const {accounts, events, committees, sessiontoken, styret} = tables<DatabaseSchema>({
     databaseSchema: require('./generated/schema.json'),
 });
-export {accounts, events, styret};
+export {accounts, events, committees, sessiontoken, styret};

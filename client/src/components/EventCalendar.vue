@@ -1,16 +1,13 @@
 <template>
   <div>
     <v-calendar
-      show-weeknumbers="right"
       :attributes='attributes'
       @dayclick='toEventsPage'
       @dayfocusout="nullCurrDate"
       style="background-color: #E0218A; border: none"
+    />
 
 
-    >
-
-    </v-calendar>
 
     <v-card
       v-if="currentDate"

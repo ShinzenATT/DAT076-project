@@ -9,7 +9,7 @@
                 <v-card-text>
                     <v-row dense>
                         <v-col v-for="com in kommitteer" :key="com.name" class="committee">
-                            <router-link :to="'kommitteer/' + com.name">
+                            <router-link :to="'/kommitteer/' + com.name">
                                 <v-img aspect-ratio="1" max-width="200" max-height="200" min-width="100" min-height="100" :src="com.logo_url ?? '/img.png'"/>
                                 <h2> {{ com.name }} </h2>
                             </router-link>
@@ -24,7 +24,7 @@
                 <v-card-text>
                     <v-row dense>
                         <v-col v-for="com in utskott" :key="com.name" class="committee">
-                            <router-link :to="'kommitteer/' + com.name">
+                            <router-link :to="'/kommitteer/' + com.name">
                                 <v-img aspect-ratio="1" max-width="200" max-height="200" min-width="100" min-height="100" :src="com.logo_url ?? '/img.png'"/>
                                 <h2> {{ com.name }} </h2>
                             </router-link>
@@ -39,7 +39,7 @@
                 <v-card-text>
                     <v-row>
                         <v-col v-for="com in foreningar" :key="com.name" class="committee">
-                            <router-link :to="'kommitteer/' + com.name">
+                            <router-link :to="'/kommitteer/' + com.name">
                                 <v-img aspect-ratio="1" max-width="200" max-height="200" min-width="100" min-height="100" :src="com.logo_url ?? '/img.png'"/>
                                 <h2> {{ com.name }} </h2>
                             </router-link>
@@ -54,7 +54,7 @@
                 <v-card-text>
                     <v-row dense>
                         <v-col v-for="com in others" :key="com.name" class="committee">
-                            <router-link :to="'kommitteer/' + com.name">
+                            <router-link :to="'/kommitteer/' + com.name">
                                 <v-img aspect-ratio="1" max-width="200" max-height="200" min-width="100" min-height="100" :src="com.logo_url ?? '/img.png'"/>
                                 <h2> {{ com.name }} </h2>
                             </router-link>
@@ -108,7 +108,7 @@ export default defineComponent({
         const res: any[] = await fetch("http://localhost:8080/committee").then(res => res.json())
         this.kommitteer = res.filter(e => e.type === 'kommittee')
         this.utskott = res.filter(e => e.type === 'utskott')
-        this.foreningar = res.filter(e => e.type === 'foreningar')
+        this.foreningar = res.filter(e => e.type === 'forening')
         this.others = res.filter(e => e.type === 'utomstaende')
         this.loading = false
    }

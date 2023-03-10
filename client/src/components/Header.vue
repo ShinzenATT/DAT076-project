@@ -28,7 +28,7 @@
 
               <v-menu>
                 <template v-slot:activator="{ props }">
-                  <v-btn
+                  <v-btn class="headerButton" style="background: none; color: black"
                     v-bind="props"
                   >
                     {{current.title}}
@@ -135,13 +135,12 @@ import {defineComponent} from "vue";
 
 <style>
 
-.headerButton>* {
+.headerButton {
   font-family: 'Lemon/Milk', sans-serif;
   font-weight: bolder;
-  filter: blur(0);
   background: none;
+  text-shadow: 1px 1px 1px white;
   color: white;
-  text-shadow: 1px 1px 1px #000000
 }
 .blurredBg {
   background: rgba(255,255,255, 50%);

@@ -30,7 +30,7 @@
         style="min-width: 300px; max-width: 300px; text-align: center"
       >
 
-        <v-img class="styretImg" src="src/assets/jesustarzan.jpg">
+        <v-img class="styretImg" :src="member.imagepath">
         </v-img>
         <h2 class="styretTitle">{{ member.post }}</h2>
         <h3 class="styretName">{{ member.name }}</h3>

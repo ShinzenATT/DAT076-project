@@ -54,32 +54,32 @@
              height="170"
              href="https://www.chalmers.se/utbildning/hitta-program/datateknik-hogskoleingenjor/"
              class="programButton">
-        <v-img width="160" src="@/assets/data.png"/>
+        <v-img width="160" src="@/assets/logos/Ikon_DATA.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Data </b>
       </v-btn>
       <v-btn class="programButton" flat stacked style="width: 160px; height: 170px;"
              href="https://www.chalmers.se/utbildning/hitta-program/elektroteknik-hogskoleingenjor/">
-        <v-img width="160" src="@/assets/elektro.png"/>
+        <v-img width="160" src="@/assets/logos/Ikon_ELEKTRO.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Elektro </b>
       </v-btn>
       <v-btn class="programButton" flat stacked style="width: 160px; height: 140px;"
              href="https://www.chalmers.se/utbildning/hitta-program/mekatronik-hogskoleingenjor/">
-        <v-img width="160" src="@/assets/mekatronik.png"/>
+        <v-img width="160" src="@/assets/logos/Ikon_MEKATRONIK.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Mekatronik </b>
       </v-btn>
       <v-btn class="programButton" flat stacked style="width: 160px; height: 140px;"
              href="https://www.chalmers.se/utbildning/hitta-program/maskinteknik-hogskoleingenjor/">
-        <v-img width="160" src="@/assets/maskin.png"/>
+        <v-img width="160" src="@/assets/logos/Ikon_MASKIN.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Maskin </b>
       </v-btn>
       <v-btn class="programButton" flat stacked style="width: 160px; height: 140px;"
              href="https://www.chalmers.se/utbildning/hitta-program/design-och-produktutveckling-hogskoleingenjor/">
-        <v-img width="160" src="@/assets/design.png"/>
+        <v-img width="160" src="@/assets/logos/Ikon_DESIGN.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Design </b>
       </v-btn>
       <v-btn class="programButton" flat stacked style="width: 160px; height: 250px;"
              href="https://www.chalmers.se/utbildning/hitta-program/ekonomi-och-produktionsteknik-hogskoleingenjor/">
-        <v-img width="160" src="@/assets/epi.png"/>
+        <v-img width="160" src="@/assets/logos/Ikon_EPI.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> EPI </b>
       </v-btn>
     </div>

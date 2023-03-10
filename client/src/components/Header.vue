@@ -87,7 +87,7 @@ import {defineComponent} from "vue";
 
             title: "Sektionen",
             content: [
-              {routeName: 'Om H', link: '/om-h'},
+              {routeName: 'Om H', link: '/about'},
               {routeName: 'Styret', link: '/styret'},
               {routeName: 'Dokument', link: '/dokument'},
               {routeName: 'SAMO', link: '/SAMO'}

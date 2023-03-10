@@ -47,6 +47,22 @@ const routes = [
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '@/views/Styret.vue'),
       },
+      {
+        path: '/samo',
+        name: 'Samo',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '@/views/Samo.vue'),
+      },
+      {
+        path: '/programteam',
+        name: 'Programteam',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '@/views/Programteam.vue'),
+      },
     ],
   },
 ]

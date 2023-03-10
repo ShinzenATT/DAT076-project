@@ -17,9 +17,11 @@ import { createApp } from 'vue'
 
 // Plugins
 import { registerPlugins } from '@/plugins'
+import {Vue3Mq} from "vue3-mq";
 
 const app = createApp(App)
-app.use(VCalendar, {})
+app.use(VCalendar, {});
+app.use(Vue3Mq);
 
 registerPlugins(app)
 

@@ -92,7 +92,6 @@
                         z-index: 11;
                         top: -200px;
                         clip-path: polygon(50% 0, 100% 0, 100% 90%, 50% 100%, 0 90%, 0 0);
-                        max-width: 4000px;
                         position: relative;
                         height: 100vh;
                         padding: 0;"

@@ -16,55 +16,22 @@
 
     <v-spacer/>
 
-    <v-col cols="6">
+    <v-col cols="6" >
 
-          <v-btn-group
-            class="d-flex justify-md-space-around"
-            multiple>
+        <div class="d-flex d-md-none">
 
-            <div
-              class="d-flex justify-space-around"
-              v-for="current in routeArr" :key="current">
+          <DropdownSmall v-model:inputArr="routeArr"></DropdownSmall>
 
-              <v-menu>
-                <template v-slot:activator="{ props }">
-                  <v-btn class="headerButton" style="background: none; color: black"
-                    v-bind="props"
-                  >
-                    {{current.title}}
-                  </v-btn>
-                </template>
-                <v-list>
+        </div>
 
-                  <v-list-item
-                    v-for="section of current.content" :key="section.link" :to="section.link"
-                  >
+        <div class="d-none d-md-flex justify-content-space-between">
 
-                    <v-list-item-title>{{section.routeName}}</v-list-item-title>
+          <v-btn-group>
 
-                  </v-list-item>
-
-                </v-list>
-              </v-menu>
-
-            </div>
-
-
-      <!--
-            <v-btn text large cols="auto">
-              Student
-            </v-btn>
-
-            <v-btn text large cols="auto">
-              Företag
-            </v-btn>
-
-            <v-btn text large cols="auto">
-              Kontakt
-            </v-btn>
-       -->
-
+            <Dropdown v-model:inputArr="routeArr"></Dropdown>
           </v-btn-group>
+
+        </div>
 
 
     </v-col>
@@ -76,8 +43,16 @@
 <script lang="ts">
 
 import {defineComponent} from "vue";
+import Dropdown from "./Dropdown.vue"
+import DropdownSmall from "./DropdownSmall.vue"
+
+
+
+
 
   export default defineComponent({
+    components: {Dropdown, DropdownSmall},
+
 
     data() {
       return {

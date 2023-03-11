@@ -22,7 +22,7 @@ export interface IEventService {
     ) : Promise<void>;
 }
 
-class EventService implements IEventService {
+export class EventService implements IEventService {
     async getEvents() : Promise<Array<Event>> {
         const res = await events(db).find({start: greaterThan(new Date())}).all();
         const organizers = (await accounts(db).find().select('name', 'id').all());

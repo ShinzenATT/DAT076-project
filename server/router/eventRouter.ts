@@ -23,6 +23,9 @@ eventRouter.post("/", async (
     req: Request<{}, {}, EventSerialized>,
     res: Response<Event | string>
 ) => {
+    console.log("event invoked")
+    console.log(req.body)
+    console.log(req.headers)
     try {
         const newEvent = await eventService.createEvent(req.body);
         res.status(201).send(newEvent);

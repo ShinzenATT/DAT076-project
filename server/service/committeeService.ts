@@ -1,6 +1,7 @@
 import {Committee} from "../model/committee";
 import db, {accounts, committees} from "../db/database";
 import {anyOf} from "@databases/pg-typed";
+import {Styret} from "../model/styret";
 
 export interface ICommitteeService{
     getCommittees(): Promise<{name: string, type: string, logo_url: string | null }[]>
@@ -57,6 +58,14 @@ export class CommitteeService implements ICommitteeService{
                 logo_url: e.logo_url
             }
         });
+    }
+
+    async getCommitteesInfo(): Promise<Array<Committee>> {
+        const data = await committees(db).find().all()
+
+        return data.map(e => {
+            return new Committee(e as Committee)
+        })
     }
 
     async removeCommittee(id: number, deleteAccount: boolean): Promise<void> {

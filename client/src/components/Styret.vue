@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <v-card flat style="background-image: url('src/assets/Styret_group1.jpg');
+    <v-card flat style="background-image: url('src/assets/styret/Styret_group1.jpg');
                         width: 100%;
                         background-position: center center;
                         margin: auto;

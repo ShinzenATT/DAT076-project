@@ -36,17 +36,17 @@
                         min-height: 600px;
                         background-color: #E667AD;
                         clip-path: polygon(50% 0, 100% 10%, 100% 90%, 50% 100%, 0 90%, 0 10%);"
-       id="about us"
+       id="aboutus"
   >
-    <h2 style="
+    <h2 id="aboutTitle" style="
               position: relative;
               font-size: x-large;
               color: white"
     >
       Om oss
     </h2>
-    <p style="position: relative; top: 50px; width: 80%; margin: auto; color: white;">Teknologsektionen IoD såg sitt ljus år 1990 då de som läste till Sjöbefäl bröt sig ur Ingenjörs- och Sjöbefälsteknologsektionen. IoD fick den vackraste sektionsfärgen Cerise tilldelad sig och så har det varit sedan dess. Under våren 1999 bytte sektionen namn till H som står för Ingenjörsteknologsektionen. Detta skedde på grund avatt driftteknikerna försvann och att det nu bara utbildades högskoleingenjörer på Chalmers Lindholmen.</p>
-    <p style="position: relative; top: 70px; width: 80%; margin: auto; color: white; font-weight: bold"> De utbildningar som idag finns på sektionen är:</p>
+    <p class="aboutParagraphs" style="position: relative; top: 50px; width: 80%; margin: auto; color: white;">Teknologsektionen IoD såg sitt ljus år 1990 då de som läste till Sjöbefäl bröt sig ur Ingenjörs- och Sjöbefälsteknologsektionen. IoD fick den vackraste sektionsfärgen Cerise tilldelad sig och så har det varit sedan dess. Under våren 1999 bytte sektionen namn till H som står för Ingenjörsteknologsektionen. Detta skedde på grund avatt driftteknikerna försvann och att det nu bara utbildades högskoleingenjörer på Chalmers Lindholmen.</p>
+    <p class="aboutParagraphs" style="position: relative; top: 70px; width: 80%; margin: auto; color: white; font-weight: bold"> De utbildningar som idag finns på sektionen är:</p>
     <div id="buttonGroup" style="clear: both; position: relative; align-content: center; top: 100px;">
       <v-btn flat
              stacked
@@ -55,32 +55,32 @@
              href="https://www.chalmers.se/utbildning/hitta-program/datateknik-hogskoleingenjor/"
              class="programButton"
              :ripple="false">
-        <v-img width="160" src="@/assets/logos/Ikon_DATA.png"/>
+        <v-img width="160" src="@/assets/icons/Ikon_DATA.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Data </b>
       </v-btn>
       <v-btn class="programButton" flat stacked style="width: 160px; height: 170px;" :ripple="false"
              href="https://www.chalmers.se/utbildning/hitta-program/elektroteknik-hogskoleingenjor/">
-        <v-img width="160" src="@/assets/logos/Ikon_ELEKTRO.png"/>
+        <v-img width="160" src="@/assets/icons/Ikon_ELEKTRO.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Elektro </b>
       </v-btn>
       <v-btn class="programButton" flat stacked :ripple="false"
              href="https://www.chalmers.se/utbildning/hitta-program/mekatronik-hogskoleingenjor/">
-        <v-img width="160" src="@/assets/logos/Ikon_MEKATRONIK.png"/>
+        <v-img width="160" src="@/assets/icons/Ikon_MEKATRONIK.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Mekatronik </b>
       </v-btn>
       <v-btn class="programButton" flat stacked style="width: 160px; height: 140px;" :ripple="false"
              href="https://www.chalmers.se/utbildning/hitta-program/maskinteknik-hogskoleingenjor/">
-        <v-img width="160" src="@/assets/logos/Ikon_MASKIN.png"/>
+        <v-img width="160" src="@/assets/icons/Ikon_MASKIN.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Maskin </b>
       </v-btn>
       <v-btn class="programButton" flat stacked style="width: 160px; height: 140px;" :ripple="false"
              href="https://www.chalmers.se/utbildning/hitta-program/design-och-produktutveckling-hogskoleingenjor/">
-        <v-img width="160" src="@/assets/logos/Ikon_DESIGN.png"/>
+        <v-img width="160" src="@/assets/icons/Ikon_DESIGN.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Design </b>
       </v-btn>
       <v-btn class="programButton" flat stacked style="width: 160px; height: 140px;" :ripple="false"
              href="https://www.chalmers.se/utbildning/hitta-program/ekonomi-och-produktionsteknik-hogskoleingenjor/">
-        <v-img width="160" src="@/assets/logos/Ikon_EPI.png"/>
+        <v-img width="160" src="@/assets/icons/Ikon_EPI.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> EPI </b>
       </v-btn>
     </div>
@@ -89,16 +89,17 @@
                         background: url('https://htek.se/wp-content/uploads/2019/10/bild.jpg');
                         background-size: cover, contain;
                         background-position: center;
+                        max-width: inherit !important;
                         z-index: 11;
                         top: -200px;
                         clip-path: polygon(50% 0, 100% 0, 100% 90%, 50% 100%, 0 90%, 0 0);
                         position: relative;
                         height: 100vh;
                         padding: 0;"
-               id="Händer på sektionen"
+               id="händer"
   >
-    <div style="width: 100%; height: 100%; backdrop-filter: blur(4px); z-index: 10; position: absolute">
-    <h2 style="
+    <div style="width: 100%; height: 100%; backdrop-filter: blur(4px); z-index: 10; position: absolute;" id="calendarBackground">
+    <h2 id="händerTitle" style="
 
               position: relative;
               font-size: x-large;
@@ -116,9 +117,6 @@
   </v-container>
 
   <v-container style="text-align: center;
-                        <!-- url('https://htek.se/wp-content/uploads/2019/10/bild2.jpg') -->
-                        background: #E667AD;
-                        max-width: 4000px;
                         position: relative;
                         top: -120px"
 
@@ -138,7 +136,7 @@
     <v-row align="center" justify="center">
 
           <v-btn
-            v-for="kommittee in kommitteer"
+            v-for="kommittee in kommitteerData"
             v-bind:key="kommittee"
             style="width: 300px; height: 250px; margin: 50px;"
             flat
@@ -153,83 +151,95 @@
     </v-row>
 
   </v-container>
-  <v-container style="  top: -100px;
+  <v-container
+                style="  top: -100px;
+                        text-align: center;
                         position: relative;
                         z-index: 0;
                         background-color: #E0218A;
                         background-size: cover;
                         clip-path: polygon(50% 10%, 100% 0, 100% 100%, 0 100%, 0 0);
-                        max-width: 4000px;
-                        height: 150vh;
-                        padding: 200px 30px;"
+                        max-width: 100%;
+                        padding: 100px 30px;"
                id="utskott"
   >
     <h2 style="
-              position: absolute;
+              position: relative;
+              font-size: x-large;
               color: white;
-              font-size: 80px;
-              top: 1.5em;
-              left: 1000px;"
-        class="subTitle"
-              >
-      UTSKOTT
+              top: 60px"
+    >
+      Utskott
     </h2>
-    <div id="utskottCards" style="display: flex; flex-wrap: wrap; height: inherit; top: 100px; position: relative">
-        <v-card id="Jamh"
-                href="https://htek.se/jamh/"
-                class="grow"
-                style="
-                  background: url('src/assets/jamh.png');
-                  background-size: cover;
-                  background-position: center;
-                  background-repeat: no-repeat;
-                  overflow: visible">
+    <div id="utskottCards" style="display: flex; flex-wrap: wrap; top: 200px; position: relative">
+        <v-card id="Jamh" class="grow" :to="'utskott/' + getUtskott('JämH').name">
+          <v-img style="border-radius: 20px"
+                 :src="getUtskott('JämH').banner_url"
+                 cover
+                 height="100%"
+          ></v-img>
           <v-card-title style="
                   position: absolute;
                   font-family: 'Lemon/Milk light', sans-serif;
                   font-weight: lighter;
-                  font-size: 80px;
+                  font-size: 60px;
                   color: white;
-                  top: -25px">
-            JAMH</v-card-title>
+                  top: -20px">
+            {{ getUtskott('JämH').name }}
+            </v-card-title>
         </v-card>
 
-    <v-card id="Harm"
-            href="https://htek.se/harm/"
-            class="grow"
-            style="
-                  background: url('src/assets/harm.png');
-                  background-size: cover;
-                  background-position: center;
-                  background-repeat: no-repeat;
-                  overflow: visible">
+    <v-card id="Harm" class="grow" :to="'utskott/' + getUtskott('Harm').name">
+      <v-img style="border-radius: 20px"
+             :src="getUtskott('Harm').banner_url"
+             cover
+             height="100%"
+      ></v-img>
       <v-card-title style="
+              font-family: 'Lemon/Milk light', sans-serif;
               position: absolute;
               font-size: 60px;
-              font-weight: bolder;
+              font-weight: lighter;
               color: white;
               top: -20px;
               ">
-        HARM</v-card-title>
+        {{ getUtskott('Harm').name }}</v-card-title>
     </v-card>
-    <v-card id="Snh"
-            href="https://htek.se/snh/"
-            class="grow"
-            style="
-                  background: url('src/assets/jesustarzan.jpg');
-                  background-size: cover;
-                  background-position: center;
-                  background-repeat: no-repeat;
-                  overflow: visible">
+    <v-card id="Snh" class="grow" :to="'utskott/' + getUtskott('SnH').name">
+      <v-img style="border-radius: 20px"
+             :src="getUtskott('SnH').banner_url"
+             cover
+             height="100%"
+      ></v-img>
       <v-card-title style="
+              font-family: 'Lemon/Milk light', sans-serif;
+              top: -20px;
               position: absolute;
               font-size: 60px;
-              font-weight: bolder;
+              font-weight: lighter;
               color: white;
-              ">
-        SNH</v-card-title>
+              ">{{ getUtskott('SnH').name }}</v-card-title>
     </v-card>
     </div>
+
+
+  </v-container>
+  <v-container style="text-align: center;
+                        position: relative;"
+
+               id="antagen"
+  >
+    <h2 style="
+              position: relative;
+              top: -60px;
+              font-size: x-large;
+              color: #E0218A;"
+        class="subTitle"
+    >
+      Har du blivit antagen?
+    </h2>
+
+    <p>Användbar information</p>
 
 
   </v-container>
@@ -251,12 +261,26 @@ export default defineComponent ({
   },
   data: () => ({
     dialog: false,
-    kommitteer: [] as any[],
+    kommitteerData: [] as any[],
+    utskottData: [] as any[],
   }),
 
   async created() {
     const res: any[] = await fetch("http://localhost:8080/committee").then(res => res.json())
-    this.kommitteer = res.filter(e => e.type === 'kommittee')
+    this.kommitteerData = res.filter(e => e.type === 'kommittee')
+    this.utskottData = res.filter(e => e.type === 'utskott')
+  },
+  methods: {
+
+    getUtskott(name: String){
+      for(let i = 0; i < this.utskottData.length; i++){
+        if(name == this.utskottData[i].name){
+          return this.utskottData[i];
+        }
+      }
+      return "not found";
+    }
+
   }
 });
 
@@ -277,12 +301,13 @@ export default defineComponent ({
   height: 35%;
   margin: 20px;
   top: -100px;
+  overflow: visible
 }
 #Harm {
   border-radius: 25px;
   top: 10px;
   width: 50%;
-  height: 40%;
+  overflow: visible
 
 }
 
@@ -290,8 +315,9 @@ export default defineComponent ({
   border-radius: 25px;
   width: 40%;
   height: 37%;
-  top: -230px;
+  top: -216px;
   left: 116px;
+  overflow: visible
 
 }
 
@@ -309,7 +335,7 @@ export default defineComponent ({
 
 .programButton {
   margin: 30px;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .programButton:hover{
@@ -317,7 +343,7 @@ export default defineComponent ({
 }
 
 .v-btn__overlay{
-  background: none;
+  background: transparent !important;
 }
 
 .programButton::after {
@@ -341,8 +367,6 @@ export default defineComponent ({
   top: 200px;
   left: 100px;
   z-index: 2;
-
-
 }
 
 #comitteeCardTitle {
@@ -363,6 +387,87 @@ h1, h2, h3, h5, h6 {
 
 h4 {
   font-family: 'Inter', sans-serif;
+}
+
+@media only screen and (max-width: 1200px) {
+
+  #aboutTitle {
+    bottom: 10px;
+  }
+
+  .aboutParagraphs {
+    width: 100% !important;
+    top: 5px !important;
+  }
+
+  #buttonGroup {
+    top: 0 !important;
+    height: 100%;
+  }
+
+  #utskott {
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%) !important;
+    padding: 0 !important ;
+  }
+
+  #utskottCards {
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: nowrap;
+    align-items: center;
+    top: 0 !important;
+  }
+  #Jamh {
+    top: 0;
+    left: 0;
+    width: 50%;
+    margin: 10%;
+  }
+  #Harm {
+    top: 0;
+    left: 0;
+    width: 50%;
+    margin: 0 !important;
+  }
+
+  #Snh {
+    left: 0;
+    top: 0;
+    width: 50%;
+    margin: 10%;
+
+  }
+
+
+
+
+  #aboutus {
+
+    top: 0;
+
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%) !important;
+
+  }
+
+  #calendar{
+    left: 25px;
+    top: 40px;
+  }
+
+  #händer {
+    align-items: center;
+  }
+
+  #händerTitle {
+    top: 0;
+  }
+
+  #calendarBackground {
+    display: grid;
+    justify-content: center
+  }
+
+
 }
 
 </style>

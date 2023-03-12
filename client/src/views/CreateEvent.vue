@@ -97,7 +97,7 @@
           <v-spacer></v-spacer>
         </v-row>
         <v-row>
-          <v-btn style="top: 40px" class="createButton" @click="createEvent">Skapa arr</v-btn>
+          <v-btn style="top: 40px" class="createButton" @click="createEvent" to="/">Skapa arr</v-btn>
 
         </v-row>
       </v-container>

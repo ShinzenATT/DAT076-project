@@ -48,14 +48,15 @@ export class CommitteeService implements ICommitteeService{
     }
 
     async getCommittees(): Promise<{ name: string; type: string; logo_url: string | null }[]> {
-        const data = await committees(db).find().select("id", "logo_url", "type").all()
+        const data = await committees(db).find().select("id", "logo_url", "type", "banner_url").all()
         const names = await accounts(db).find({id: anyOf(data.map(e => e.id))}).select("id", "name").all()
 
         return data.map(e => {
             return {
                 name: names.find(n => n.id === e.id)?.name ?? 'unknown',
                 type: e.type,
-                logo_url: e.logo_url
+                logo_url: e.logo_url,
+                banner_url: e.banner_url,
             }
         });
     }

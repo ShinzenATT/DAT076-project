@@ -64,13 +64,18 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '@/views/Programteam.vue'),
       },
       {
+        path: '/login',
+        name: 'Login',
+        component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue'),
+      },
+      {
         path: '/admin',
         name: 'Admin',
         component: () => import(/* webpackChunkName: "admin" */ '@/layouts/default/Admin.vue'),
         children: [
           {
             path: '',
-            component: () => import(/* webpackChunkName: "admin" */ '@/views/Committees.vue'),
+            component: () => import(/* webpackChunkName: "MyAccount" */ '@/views/admin/MittKonto.vue'),
           }
           ]
       }

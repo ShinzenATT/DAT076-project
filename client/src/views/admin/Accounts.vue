@@ -21,7 +21,9 @@
        </v-expansion-panels>
      </template>
      <template #expanded-row="props">
-       <account-form :model-value="props.item.value" />
+       <td colspan="3">
+        <account-form :model-value="props.item.value" />
+       </td>
      </template>
 
    </v-data-table>

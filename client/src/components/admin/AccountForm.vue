@@ -1,5 +1,5 @@
 <template>
-  <v-card :class="createNew ? '' : 'tabled'">
+  <v-card>
       <v-form @submit.prevent="submit">
         <v-btn v-if="!createNew" color="red" icon="mdi-delete" style="position: absolute; bottom: 10px; right: 10px;" @click="deleteItem"/>
         <v-text-field v-model="account.name" label="Namn" color="primary"/>
@@ -87,6 +87,7 @@ export default defineComponent( {
 
       this.account = await res.json()
       this.success = true
+      this.$emit('update:modelValue', this.account)
     },
     async deleteItem(){
       this.loading = true
@@ -121,15 +122,5 @@ export default defineComponent( {
 <style scoped>
   .v-card{
     padding: 10px;
-  }
-
-  .tabled {
-    display: table-row;
-  }
-
-  .tabled .v-form {
-    display: table-cell;
-    width: 100%;
-    padding: 10px 0;
   }
 </style>

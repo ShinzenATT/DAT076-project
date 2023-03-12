@@ -83,26 +83,30 @@ adminRouter.delete('/:name/:id', async(
 adminRouter.put('/:name', async(
    req:Request<{name : string}, {}, any>,
    res:Response) => {
-        switch (req.params.name) {
-            case "kommitteer":
-                res.send(await committeeService.editCommittee(req.body));
-                break;
-            case "styret":
-                res.send(await styretService.editStyret(req.body))
-                break;
-            case "events":
-                res.send(await eventService.editEvent(req.body));
-                break;
-            case "accounts":
-                try {
-                    res.send(await accountService.editAccount(req.body));
-                } catch (e) {
-                    res.status(400).send(e)
-                }
-                break;
-            default:
-                res.sendStatus(404)
-                break;
+        try {
+            switch (req.params.name) {
+                case "kommitteer":
+                    res.send(await committeeService.editCommittee(req.body));
+                    break;
+                case "styret":
+                    res.send(await styretService.editStyret(req.body))
+                    break;
+                case "events":
+                    res.send(await eventService.editEvent(req.body));
+                    break;
+                case "accounts":
+                    try {
+                        res.send(await accountService.editAccount(req.body));
+                    } catch (e) {
+                        res.status(400).send(e)
+                    }
+                    break;
+                default:
+                    res.sendStatus(404)
+                    break;
+            }
+        } catch (e) {
+            res.status(400).send(e)
         }
     }
 );

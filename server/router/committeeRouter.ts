@@ -10,6 +10,10 @@ router.get('/', async (req, res) => {
     res.send(await committeeService.getCommittees())
 })
 
+router.get('/getCommitteesInfo', async (req, res) => {
+    res.send(await committeeService.getCommitteesInfo())
+})
+
 router.get('/:name', async (req: Request<{name: string}, {}, {}>, res: Response) => {
     try {
         res.send(await committeeService.getCommitteeInfo(req.params.name))

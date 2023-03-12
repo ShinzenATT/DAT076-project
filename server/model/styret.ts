@@ -16,3 +16,12 @@ export class Styret {
     }
 }
 
+export interface StyretSerialized {
+    name : string;
+    post: string;
+    email: string;
+    description : string;
+    imagepath : string;
+    id : number;
+}
+

@@ -10,6 +10,9 @@ import App from './App.vue'
 import VCalendar from 'v-calendar';
 import 'v-calendar/dist/style.css';
 
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
+
 // Use plugin with defaults
 
 // Composables
@@ -17,11 +20,10 @@ import { createApp } from 'vue'
 
 // Plugins
 import { registerPlugins } from '@/plugins'
-import {Vue3Mq} from "vue3-mq";
 
 const app = createApp(App)
-app.use(VCalendar, {});
-app.use(Vue3Mq);
+app.use(VCalendar, {})
+app.component('VueDatePicker', VueDatePicker);
 
 registerPlugins(app)
 

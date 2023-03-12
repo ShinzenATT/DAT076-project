@@ -1,7 +1,6 @@
 <template>
 
   <v-app-bar id="header" class="d-flex justify-md-space-between" elevation="0">
-  <v-col cols="auto">
       <router-link to="/">
         <v-img
           contain
@@ -12,12 +11,8 @@
           ref=""
         />
       </router-link>
-  </v-col>
 
-    <v-spacer/>
-
-    <v-col cols="6" >
-
+    <template #append>
         <div class="d-flex d-md-none">
 
           <DropdownSmall v-model:inputArr="routeArr"></DropdownSmall>
@@ -32,10 +27,7 @@
           </v-btn-group>
 
         </div>
-
-
-    </v-col>
-
+    </template>
   </v-app-bar>
 
 </template>

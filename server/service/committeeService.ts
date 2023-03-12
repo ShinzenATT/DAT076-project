@@ -15,7 +15,8 @@ export interface ICommitteeService{
 
 export class CommitteeService implements ICommitteeService{
     async editCommittee(data: Committee): Promise<Committee> {
-        const res = committees(db).insertOrUpdate(['id'], {
+        const acc = (await accounts(db).update({id: data.id}, {name: data.name, email: data.email}))[0]
+        const res = await committees(db).insertOrUpdate(['id'], {
             id: data.id,
             fullname: data.fullname,
             type: data.type,
@@ -26,7 +27,7 @@ export class CommitteeService implements ICommitteeService{
             logo_url: data.logo_url,
             banner_url: data.banner_url
         })
-        return new Committee({...data, ...res})
+        return new Committee({...res[0], email: acc.email, name: acc.name})
     }
 
     async getCommitteeInfo(name: string): Promise<Committee> {

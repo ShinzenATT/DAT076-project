@@ -80,6 +80,10 @@ const routes = [
           {
             path: 'anvandare',
             component: () => import(/* webpackChunkName: "Users" */ '@/views/admin/Accounts.vue')
+          },
+          {
+            path: 'kommitteer',
+            component: () => import(/* webpackChunkName: "Committees" */ '@/views/admin/CommitteesAdmin.vue')
           }
         ]
       },

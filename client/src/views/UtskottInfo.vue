@@ -1,14 +1,14 @@
 <template>
   <v-progress-circular v-if="loading" size="50" width="6" indeterminate color="primary" style="display: flex; margin: auto;"/>
   <div v-else>
-    <v-img :src="committee.banner_url" max-height="465" cover style="display: block; width: 100%; top: -64px;"/>
+    <v-img :src="committee.banner_url" max-height="300" cover style="display: block; width: 100%;"/>
     <v-container>
       <v-row>
         <v-col cols="12" sm="2">
           <v-img :src="committee.logo_url" max-height="200" style="width: 100%;"/>
         </v-col>
         <v-col>
-          <v-card-title style="font-family: 'Lemon/Milk', sans-serif"> <h1> {{ committee.fullname }} </h1> </v-card-title>
+          <v-card-title> <h1> {{ committee.fullname }} </h1> </v-card-title>
           <v-card-subtitle v-if="committee.fullname !== committee.name"><h3> {{ committee.name }} </h3></v-card-subtitle>
           <v-card-actions style="flex-wrap: wrap;">
             <v-btn v-if="committee.website" prepend-icon="mdi-web" variant="outlined" :href="'https://' + committee.website"> {{ committee.website }} </v-btn>
@@ -45,7 +45,7 @@ export default defineComponent({
         }
     },
     async created(){
-      const res = await fetch('http://localhost:8080/committee/' + this.$router.currentRoute.value.params.name)
+      const res = await fetch('http://localhost:8080/utskott/' + this.$router.currentRoute.value.params.name)
       if(!res.ok){
         this.error = true
         return

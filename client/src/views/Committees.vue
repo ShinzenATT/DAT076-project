@@ -91,21 +91,22 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue'
+import {CommitteeListMember} from "../../types/committees";
 
 export default defineComponent({
     name: "Commitees",
     data(){
         return {
-            kommitteer: [] as any[],
-            utskott: [] as any[],
-            foreningar: [] as any[],
-            others: [] as any[],
+            kommitteer: [] as CommitteeListMember[],
+            utskott: [] as CommitteeListMember[],
+            foreningar: [] as CommitteeListMember[],
+            others: [] as CommitteeListMember[],
             loading: true
         }
     },
 
    async created(){
-        const res: any[] = await fetch("http://localhost:8080/committee").then(res => res.json())
+        const res: CommitteeListMember[] = await fetch("http://localhost:8080/committee").then(res => res.json())
         this.kommitteer = res.filter(e => e.type === 'kommittee')
         this.utskott = res.filter(e => e.type === 'utskott')
         this.foreningar = res.filter(e => e.type === 'forening')

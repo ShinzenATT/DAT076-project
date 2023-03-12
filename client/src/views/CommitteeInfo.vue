@@ -32,13 +32,14 @@
 </style>
 
 <script lang="ts">
+import { Committee } from 'types/committees'
 import {defineComponent} from 'vue'
 
 export default defineComponent({
     name: 'committeeInfo',
     data(){
         return {
-            committee: {} as any,
+            committee: {} as Committee,
             error: false,
             loading: true
         }

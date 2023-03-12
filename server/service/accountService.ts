@@ -6,9 +6,11 @@ import {lessThan} from "@databases/pg-typed";
 export interface IAccountService{
     login(email: string, password: string): Promise<{token: string, account: Account}>
     getAccountInfo(id: number): Promise<Account>
+    getAccounts(): Promise<Account[]>
     createAccount(data: Accounts_InsertParameters): Promise<Account>
     editAccount(data: Account): Promise<Account>
     checkToken(token: string): Promise<number | null>
+    deleteAccount(id: number): Promise<void>
 }
 
 export class AccountService implements IAccountService{
@@ -64,5 +66,15 @@ export class AccountService implements IAccountService{
         });
     }
 
+    async getAccounts(): Promise<Account[]> {
+        const data = await accounts(db).find().select('id', 'name', 'email', 'admin').all()
+        return data.map((account) => new Account({
+            ...account,
+            password: undefined
+        }))
+    }
 
+    async deleteAccount(id: number): Promise<void> {
+        await accounts(db).delete({id})
+    }
 }

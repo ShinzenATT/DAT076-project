@@ -4,6 +4,7 @@ import accountRouter from "./router/accountRouter";
 import committeeRouter from "./router/committeeRouter";
 import cors from "cors";
 import {styretRouter} from "./router/styretRouter";
+import {adminRouter} from "./router/adminRouter";
 
 export const app = express();
 
@@ -13,4 +14,5 @@ app.use("/event", eventRouter);
 app.use("/styret", styretRouter);
 app.use('/account', accountRouter);
 app.use('/committee', committeeRouter);
+app.use('/admin', adminRouter)
 

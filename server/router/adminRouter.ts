@@ -2,10 +2,12 @@ import {CommitteeService} from "../service/committeeService";
 import {makeStyretService} from "../service/styretService";
 import {makeEventService} from "../service/eventService";
 import express, {Request, Response} from "express";
+import {AccountService} from "../service/accountService";
 
 const styretService = makeStyretService();
 const committeeService = new CommitteeService();
 const eventService = makeEventService();
+const accountService = new AccountService();
 
 export const adminRouter = express.Router();
 
@@ -30,6 +32,26 @@ adminRouter.get("/", async(
     }
 });
 
+adminRouter.get('/:name', async (req: Request<{name : string}, {}, {}>, res: Response) => {
+switch (req.params.name) {
+        case "styret":
+            res.send(await styretService.getStyret());
+            break;
+        case "kommitteer":
+            res.send(await committeeService.getCommitteesInfo());
+            break;
+        case "events":
+            res.send(await eventService.getEvents());
+            break;
+        case "accounts":
+            res.send(await accountService.getAccounts());
+            break;
+        default:
+            res.sendStatus(404)
+            break;
+    }
+})
+
 adminRouter.delete('/:name/:id', async(
     req: Request<{name : string, id: string}, {}, {deleteAccount: boolean} | undefined>,
     res: Response
@@ -49,7 +71,11 @@ adminRouter.delete('/:name/:id', async(
             case "events":
                 res.send(await eventService.deleteEvent(id));
                 break;
+            case "accounts":
+                res.send(await accountService.deleteAccount(id));
+                break;
             default:
+                res.sendStatus(404)
                 break;
         }
     });
@@ -67,7 +93,15 @@ adminRouter.put('/:name', async(
             case "events":
                 res.send(await eventService.editEvent(req.body));
                 break;
+            case "accounts":
+                try {
+                    res.send(await accountService.editAccount(req.body));
+                } catch (e) {
+                    res.status(400).send(e)
+                }
+                break;
             default:
+                res.sendStatus(404)
                 break;
         }
     }

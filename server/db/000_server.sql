@@ -15,7 +15,7 @@ CREATE TABLE SessionToken(
 CREATE TYPE AssociationType AS ENUM('utskott', 'forening', 'kommittee', 'utomstaende');
 
 CREATE TABLE Committees(
-    id INT PRIMARY KEY REFERENCES Accounts,
+    id INT PRIMARY KEY REFERENCES Accounts on update cascade on delete cascade,
     fullname TEXT,
     description TEXT,
     facebook TEXT,
@@ -33,7 +33,7 @@ CREATE TABLE Events (
     stop TIMESTAMP NOT NULL,
     description TEXT NOT NULL DEFAULT '',
     location TEXT NOT NULL,
-    hostId int NOT NULL REFERENCES Accounts,
+    hostId int NOT NULL REFERENCES Accounts on update cascade on delete cascade,
     imagePath VARCHAR(200)
 );
 

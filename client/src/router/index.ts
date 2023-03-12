@@ -75,9 +75,13 @@ const routes = [
         children: [
           {
             path: '',
-            component: () => import(/* webpackChunkName: "MyAccount" */ '@/views/admin/MittKonto.vue'),
+            component: () => import(/* webpackChunkName: "MyAccount" */ '@/views/admin/MittKonto.vue')
+          },
+          {
+            path: 'anvandare',
+            component: () => import(/* webpackChunkName: "Users" */ '@/views/admin/Accounts.vue')
           }
-          ]
+        ]
       },
       {
         path: '/createEvent',

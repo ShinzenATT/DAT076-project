@@ -8,6 +8,8 @@
         <template v-slot:activator="{ props }">
           <v-btn
             v-bind="props"
+            variant="text"
+            class="actButton"
           >
             {{current.title}}
           </v-btn>
@@ -16,6 +18,7 @@
 
           <v-list-item
             v-for="section of current.content" :key="section.link" :to="section.link"
+            class="actButton align-center justify-center"
           >
 
             <v-list-item-title>{{section.routeName}}</v-list-item-title>
@@ -58,5 +61,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+.actButton {
+  font-family: "Lemon/Milk", sans-serif;
+}
 
 </style>

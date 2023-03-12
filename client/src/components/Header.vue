@@ -16,17 +16,17 @@
 
     <v-spacer/>
 
-    <v-col cols="6" >
+    <v-col sm="1" md="auto">
 
-        <div class="d-flex d-md-none">
+        <div class="d-flex d-md-none justify-content-end">
 
-          <DropdownSmall v-model:inputArr="routeArr"></DropdownSmall>
+            <DropdownSmall v-model:inputArr="routeArr"></DropdownSmall>
 
         </div>
 
-        <div class="d-none d-md-flex justify-content-space-between">
+        <div class="d-none d-md-flex">
 
-          <v-btn-group>
+          <v-btn-group class="justify-content-space-between">
 
             <Dropdown v-model:inputArr="routeArr"></Dropdown>
           </v-btn-group>

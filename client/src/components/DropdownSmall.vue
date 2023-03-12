@@ -5,30 +5,39 @@
     <template v-slot:activator="{props: parent}">
       <v-btn
         v-bind="parent"
+        flat
+        class="justify-center align-center actButton"
       >
-        Test Button
+        <v-icon
+          end
+          icon="mdi-menu"
+          size="45"
+        />
       </v-btn>
 
     </template>
 
-    <v-list>
+    <v-list nav>
 
         <v-list-item
           v-for="current in inputArr" :key="current"
+          class="actButton align-center justify-center"
         >
 
           <v-menu location="start">
             <template v-slot:activator="{props: child }">
               <v-btn
                 v-bind="child"
+                flat
               >
                 {{current.title}}
               </v-btn>
             </template>
-            <v-list >
+            <v-list nav>
 
               <v-list-item
                 v-for="section of current.content" :key="section.link" :to="section.link"
+                class="actButton align-center justify-center"
               >
 
                 <v-list-item-title>{{section.routeName}}</v-list-item-title>
@@ -81,5 +90,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+  .actButton {
+    font-family: "Lemon/Milk", sans-serif;
+  }
 
 </style>

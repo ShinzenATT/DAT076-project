@@ -14,6 +14,8 @@
       v-for="event in currEvents"
       id="dayViewCard"
       max-width="344"
+      min-width="250"
+      max-height="370"
       style="margin: 0 20px"
 
     >
@@ -28,30 +30,11 @@
       </v-card-title>
 
       <v-card-subtitle>
-        {{ event?.start.toString().split(" GMT")[0]}}
+        {{ new Date(event?.start).toLocaleTimeString() + " " +  new Date(event?.start).toLocaleDateString()}}
       </v-card-subtitle>
 
       <v-card-item>{{ event?.description }}</v-card-item>
 
-      <v-card-actions>
-        <v-btn text>Share</v-btn>
-
-        <v-btn
-          color="purple"
-          text
-        >
-          Explore
-        </v-btn>
-
-        <v-spacer></v-spacer>
-
-        <v-btn
-          icon
-          @click="show = !show"
-        >
-          <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-        </v-btn>
-      </v-card-actions>
 
       <v-expand-transition>
         <div v-show="show">

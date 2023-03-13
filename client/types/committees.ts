@@ -1,3 +1,9 @@
+/**
+ * Committee & Committee member
+ *
+ * Specifies the variables for the committee-type and it's members
+ */
+
 export interface CommitteeListMember {
   name: string
   type: string

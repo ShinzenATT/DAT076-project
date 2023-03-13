@@ -1,3 +1,9 @@
+/**
+ * Account & Login session
+ *
+ * Specifies the variables for the account-type and login session
+ */
+
 export interface Account {
   id: number
   name: string

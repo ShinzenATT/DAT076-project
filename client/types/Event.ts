@@ -1,3 +1,9 @@
+/**
+ * Events
+ *
+ * Specifies the variables for the event-type.
+ */
+
 import {Committee} from "./committees";
 
 export interface Event {

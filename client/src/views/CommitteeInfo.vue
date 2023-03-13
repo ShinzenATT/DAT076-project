@@ -1,3 +1,5 @@
+<!-- Frontend implementation for 'Committee information'-page -->
+
 <template>
   <v-progress-circular v-if="loading" size="50" width="6" indeterminate color="primary" style="display: flex; margin: auto;"/>
   <div v-else>

@@ -1,3 +1,5 @@
+<!-- Frontend implementation for 'About'-page -->
+
 <template>
   <div class="about">
     <v-img src="@/assets/about_cover.jpg"

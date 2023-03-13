@@ -1,6 +1,16 @@
+/**
+ * index.ts
+ *
+ * All routes for the project are specified here, pointing every valid route towards the
+ * requested page. The views are all located in 'client/src/views/'
+ */
+
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 
+// Route level code-splitting.
+// This generates a separate chunk (about.[hash].js) for the route
+// which is lazy-loaded when the route is visited.
 const routes = [
   {
     path: '/',
@@ -9,25 +19,16 @@ const routes = [
       {
         path: '',
         name: 'Home',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
       },
       {
         path: '/about',
         name: 'About',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
       },
       {
         path: '/eventCalendar',
         name: 'EventCalendar',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "eventCalendar" */ '@/views/EventCalendar.vue'),
       },
       {
@@ -46,25 +47,16 @@ const routes = [
       {
         path: '/styret',
         name: 'Styret',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '@/views/Styret.vue'),
       },
       {
         path: '/samo',
         name: 'Samo',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '@/views/Samo.vue'),
       },
       {
         path: '/programteam',
         name: 'Programteam',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '@/views/Programteam.vue'),
       },
       {
@@ -102,9 +94,6 @@ const routes = [
       {
         path: '/createEvent',
         name: 'CreateEvent',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '@/views/CreateEvent.vue'),
       }
     ],
@@ -116,4 +105,5 @@ const router = createRouter({
   routes,
 })
 
+// Exports the router
 export default router

@@ -1,4 +1,8 @@
+<!-- Frontend implementation for 'Home'-page -->
+
 <template>
+
+  <!-- Places the image and rubric at the top of the welcome-page -->
   <div id="main">
     <v-card flat style="background-image: url('/groupimg.jpg');
                         width: 100%;
@@ -18,14 +22,12 @@
                   text-shadow: 1px 1px 1px white;
                   font-size: x-large"
       > Välkommen till H-sektionen! </h1>
-
-
-
     </v-card>
 
     <v-spacer></v-spacer>
-
   </div>
+
+  <!-- 'About us'-section, presenting the different programmes -->
   <div style="text-align: center;
                         background-position: center;
                         z-index: 100;
@@ -47,6 +49,8 @@
     </h2>
     <p class="aboutParagraphs" style="position: relative; top: 50px; width: 80%; margin: auto; color: white;">Teknologsektionen IoD såg sitt ljus år 1990 då de som läste till Sjöbefäl bröt sig ur Ingenjörs- och Sjöbefälsteknologsektionen. IoD fick den vackraste sektionsfärgen Cerise tilldelad sig och så har det varit sedan dess. Under våren 1999 bytte sektionen namn till H som står för Ingenjörsteknologsektionen. Detta skedde på grund avatt driftteknikerna försvann och att det nu bara utbildades högskoleingenjörer på Chalmers Lindholmen.</p>
     <p class="aboutParagraphs" style="position: relative; top: 70px; width: 80%; margin: auto; color: white; font-weight: bold"> De utbildningar som idag finns på sektionen är:</p>
+
+    <!-- Here every programme gets its own clickable logo, linking to the chalmers webpage -->
     <div id="buttonGroup" style="clear: both; position: relative; align-content: center; top: 100px;">
       <v-btn flat
              stacked
@@ -85,6 +89,9 @@
       </v-btn>
     </div>
   </div>
+
+
+  <!-- Event-calendar section -->
   <v-container style="text-align: center;
                         background: url('https://htek.se/wp-content/uploads/2019/10/bild.jpg');
                         background-size: cover, contain;
@@ -110,7 +117,8 @@
       Vad händer hos oss?
     </h2>
 
-    <EventCalendar id="calendar"></EventCalendar>
+      <!-- Event calendar component is inserted -->
+      <EventCalendar id="calendar"></EventCalendar>
     </div>
 
 

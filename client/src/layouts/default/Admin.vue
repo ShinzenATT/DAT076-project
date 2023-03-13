@@ -37,7 +37,7 @@ export default defineComponent({
         { title: "Mitt Konto", props: {"prepend-icon": "mdi-account-details", to: "/admin/"} },
         { title: "Kommitteer", props: { "prepend-icon": "mdi-clipboard-account", to: "/admin/kommitteer" } },
         { title: "Användare", props: { "prepend-icon": "mdi-account-group", to: "/admin/anvandare" } },
-        { title: "Event", props: { "prepend-icon": "mdi-calendar", to: "/admin/event" } },
+        { title: "Event", props: { "prepend-icon": "mdi-calendar", to: "/admin/events" } },
         { title: "Styret", props: { "prepend-icon": "mdi-contacts", to: "/admin/styret" } }
       ],
     }

@@ -10,7 +10,7 @@ export const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use("/event", eventRouter);
+app.use("/events", eventRouter);
 app.use("/styret", styretRouter);
 app.use('/account', accountRouter);
 app.use('/committee', committeeRouter);

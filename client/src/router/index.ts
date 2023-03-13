@@ -84,6 +84,10 @@ const routes = [
           {
             path: 'kommitteer',
             component: () => import(/* webpackChunkName: "Committees" */ '@/views/admin/CommitteesAdmin.vue')
+          },
+          {
+            path: 'events',
+            component: () => import(/* webpackChunkName: "Events" */ '@/views/admin/EventsAdmin.vue')
           }
         ]
       },

@@ -1,15 +1,24 @@
 import { IEventService, makeEventService } from "./eventService";
 import { Event, EventSerialized } from "../model/event";
-import db, {accounts, events} from "../db/database";
+import db, {accounts, events, sql} from "../db/database";
 import {Events} from "../db/generated";
 
 beforeAll(async () => {
     await accounts(db).delete({})
     await accounts(db).insert({name: "user", email: "a@b.c", password: "test", id: 1})
     await events(db).delete({});
+    await db.query(sql`ALTER SEQUENCE events_id_seq RESTART WITH 1;`)
 })
 
-//afterEach(async () => await events(db).delete({}));
+afterEach(async () => {
+    await events(db).delete({})
+    await db.query(sql`ALTER SEQUENCE events_id_seq RESTART WITH 1;`)
+});
+
+afterAll(async () => {
+    await events(db).delete({})
+    await db.query(sql`ALTER SEQUENCE events_id_seq RESTART WITH 1;`)
+})
 
 test("Get event", async () => {
     const event ={
@@ -17,13 +26,14 @@ test("Get event", async () => {
         name: 'test',
         description: 'desc',
         organizer: 'user',
-        start: new Date(),
-        stop: new Date(),
+        start: new Date(Date.now() + 100000),
+        stop: new Date(Date.now() + 100000),
         location: "Lindholmen",
         imagepath: '/'
     };
     const service = makeEventService();
     await events(db).insert({
+        id: event.id,
         name: event.name,
         location: event.location,
         description: event.description,
@@ -33,7 +43,7 @@ test("Get event", async () => {
         hostid: 1
     })
     expect(await service.getEvents()).toStrictEqual([new Event(event)]);
-    await events(db).delete({})
+
 });
 
 /**
@@ -50,8 +60,8 @@ test("Create event", async () => {
         name: 'test',
         description: 'desc',
         organizer: 1,
-        start: new Date().toJSON(),
-        stop: new Date().toJSON(),
+        start: new Date(Date.now() + 100000).toJSON(),
+        stop: new Date(Date.now() + 100000).toJSON(),
         location: "Lindholmen",
         imagepath: '/'
     };
@@ -65,7 +75,7 @@ test("Create event", async () => {
     event.id = 2;
     event.organizer = 'user';
     expect((await service.getEvents())[1]).toStrictEqual(new Event(event));
-    await events(db).delete({})
+
 });
 
 test("Edit event", async () => {
@@ -74,13 +84,14 @@ test("Edit event", async () => {
         name: 'test',
         description: 'desc',
         organizer: 1,
-        start: new Date().toJSON(),
-        stop: new Date().toJSON(),
+        start: new Date(Date.now() + 100000).toJSON(),
+        stop: new Date(Date.now() + 100000).toJSON(),
         location: "Lindholmen",
         imagepath: '/'
     };
     const service = makeEventService();
     await events(db).insert({
+        id: event.id,
         name: event.name,
         location: event.location,
         description: event.description,
@@ -95,7 +106,7 @@ test("Edit event", async () => {
     event.organizer = 'user'
 
     expect((await service.getEvents())[0]).toStrictEqual(new Event(event));
-    await events(db).delete({})
+
 });
 
 test("Invalid timestamp test", async () => {
@@ -123,8 +134,8 @@ test("Invalid timestamp test", async () => {
         name: 'test',
         description: 'desc',
         organizer: 'user',
-        start: new Date().toJSON(),
-        stop: new Date().toJSON(),
+        start: new Date(Date.now() + 100000).toJSON(),
+        stop: new Date(Date.now() + 100000).toJSON(),
         location: "Lindholmen",
         imagepath: '/'
     };
@@ -132,8 +143,8 @@ test("Invalid timestamp test", async () => {
         name: event.name,
         location: event.location,
         description: event.description,
-        start: new Date(),
-        stop: new Date(),
+        start: new Date(Date.now() + 100000),
+        stop: new Date(Date.now() + 100000),
         imagepath: event.imagepath,
         hostid: 1
     } as Events)
@@ -144,7 +155,7 @@ test("Invalid timestamp test", async () => {
         trip = true;
     }
     expect(trip).toBeTruthy();
-    await events(db).delete({})
+
 })
 
 test("Event not found test", async () => {
@@ -153,13 +164,14 @@ test("Event not found test", async () => {
         name: 'test',
         description: 'desc',
         organizer: 1,
-        start: new Date().toJSON(),
-        stop: new Date().toJSON(),
+        start: new Date(Date.now() + 100000).toJSON(),
+        stop: new Date(Date.now() + 100000).toJSON(),
         location: "Lindholmen",
         imagepath: '/'
     };
     const service = makeEventService();
     await events(db).insert({
+        id: event.id,
         name: event.name,
         location: event.location,
         description: event.description,
@@ -178,7 +190,7 @@ test("Event not found test", async () => {
         expect(error.message).toStrictEqual("Event not found");
     }
     expect(trip).toBeTruthy();
-    await events(db).delete({})
+
 });
 
 test("Delete event", async () => {
@@ -187,13 +199,14 @@ test("Delete event", async () => {
         name: 'test',
         description: 'desc',
         organizer: 'user',
-        start: new Date(),
-        stop: new Date(),
+        start: new Date(Date.now() + 100000),
+        stop: new Date(Date.now() + 100000),
         location: "Lindholmen",
         imagepath: '/'
     });
     const service = makeEventService();
     await events(db).insert({
+        id: event.id,
         name: event.name,
         location: event.location,
         description: event.description,
@@ -205,7 +218,7 @@ test("Delete event", async () => {
     await service.deleteEvent(1);
 
     expect((await service.getEvents()).length).toStrictEqual(0);
-    await events(db).delete({})
+
 });
 
 test("Full event service test", async () => {
@@ -214,8 +227,8 @@ test("Full event service test", async () => {
         name: 'test',
         description: 'desc',
         organizer: 1,
-        start: new Date().toJSON(),
-        stop: new Date().toJSON(),
+        start: new Date(Date.now() + 100000).toJSON(),
+        stop: new Date(Date.now() + 100000).toJSON(),
         location: "Lindholmen",
         imagepath: '/'
     };
@@ -227,7 +240,7 @@ test("Full event service test", async () => {
     expect((await service.getEvents())[0]).toStrictEqual(new Event(event));
 
     event.description = "wah";
-    event.stop = new Date().toJSON();
+    event.stop = new Date(Date.now() + 100000).toJSON();
     event.location = "not here";
     event.organizer  = 1;
 
@@ -235,7 +248,7 @@ test("Full event service test", async () => {
     event.organizer = 'user';
     expect((await service.getEvents())[0]).toStrictEqual(new Event(event));
 
-    await service.deleteEvent(0);
+    await service.deleteEvent(1);
     expect((await service.getEvents()).length).toStrictEqual(0);
-    await events(db).delete({})
+
 });

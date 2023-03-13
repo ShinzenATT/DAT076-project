@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "nodemon",
-    "test": "jest",
+    "test": "jest --runInBand",
     "build": "tsc && cp db/generated/schema.json dist/db/generated/"
   },
   "author": "",

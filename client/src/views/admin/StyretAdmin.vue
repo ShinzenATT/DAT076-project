@@ -38,7 +38,7 @@ export default defineComponent( {
     loading: true,
     headers: [
       {title: 'Namn', align: 'start', key: 'name'}
-    ]
+    ] as any
   }),
   async created(){
     this.styret = await fetch("http://localhost:8080/styret/").then(e => e.json())

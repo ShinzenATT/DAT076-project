@@ -1,4 +1,4 @@
-# DAT037 course project - Website for Chalmers student union
+# DAT037 course project - Website for H Division Chalmers
 
 This project aims to reproduce and upgrade the already existing site https://htek.se/. Htek is the website of a 
 Chalmers student union and provides information about what the student union is up to. This includes contact 

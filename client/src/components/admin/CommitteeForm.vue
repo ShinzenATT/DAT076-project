@@ -1,5 +1,5 @@
 <template>
-   <v-card :loading="loading && committee === {}">
+   <v-card :loading="loading && !committee.name">
      <v-form v-if="committee.name !== undefined" @submit.prevent="submit()">
        <v-text-field v-model="committee.name" label="Namn" color="primary"/>
        <v-text-field v-model="committee.fullname" label="Fullständig Namn" color="primary"/>
@@ -13,7 +13,7 @@
        <v-textarea v-model="committee.description" label="Beskrivning" color="primary"/>
 
        <v-btn type="submit" :color="color" :loading="loading"> Spara </v-btn>
-       <span :style="'color:' + $vuetify.theme.current.colors.error"> {{ this.error }} </span>
+       <span :style="'color:' + $vuetify.theme.current.colors.error"> {{ error }} </span>
 
        <v-btn v-if="!createNew" color="red" icon="mdi-delete" style="position: absolute; bottom: 10px; right: 10px;" @click="deleteItem"/>
      </v-form>

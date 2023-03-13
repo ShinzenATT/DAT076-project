@@ -149,7 +149,6 @@
             flat
             :ripple="false"
             stacked
-            v-bind="props"
             :to="'kommitteer/' + kommittee.name"
 
           >

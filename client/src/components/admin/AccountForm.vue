@@ -6,7 +6,7 @@
         <v-text-field v-model="account.email" label="email" color="primary"/>
         <v-text-field v-model="account.password" label="password" color="primary"/>
         <v-switch v-model="account.admin" label="Admin" color="primary"/>
-        <v-btn :loading="loading" type="submit" :color="color"> Spara </v-btn> <span :style="'color: ' + $vuetify.theme.current.colors.error"> {{ this.error }}</span>
+        <v-btn :loading="loading" type="submit" :color="color"> Spara </v-btn> <span :style="'color: ' + $vuetify.theme.current.colors.error"> {{ error }}</span>
       </v-form>
   </v-card>
 </template>

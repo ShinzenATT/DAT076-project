@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <v-card flat style="background-image: url('src/assets/styret/Styret_group1.jpg');
+    <v-card flat style="background-image: url('/styret/Styret_group1.jpg');
                         width: 100%;
                         background-position: center center;
                         margin: auto;
@@ -26,11 +26,11 @@
     <v-row align="center" justify="center">
       <v-col
         v-for="member in styret"
-        :key="member"
+        :key="member.id"
         style="min-width: 300px; max-width: 300px; text-align: center"
       >
 
-        <v-img class="styretImg" :src="member.imagepath">
+        <v-img class="styretImg" :src="member.imagepath ?? undefined">
         </v-img>
         <h2 class="styretTitle">{{ member.post }}</h2>
         <h3 class="styretName">{{ member.name }}</h3>
@@ -47,23 +47,21 @@
 <script lang="ts">
 
 import {defineComponent} from "vue";
+import {Styret} from "../../types/styret";
 
 export default defineComponent ({
 
   data: () => ({
-    styret: []
+    styret: [] as Styret[]
   }),
 
   async created() {
-    console.log("hello")
 
     const response = await fetch('http://localhost:8080/styret', {
       method: 'GET',
 
     });
-    const res = await response.json();
-    this.styret = res;
-    console.log("this is styret " + res);
+    this.styret = await response.json();
   }
 
 })

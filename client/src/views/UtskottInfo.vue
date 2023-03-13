@@ -1,11 +1,11 @@
 <template>
   <v-progress-circular v-if="loading" size="50" width="6" indeterminate color="primary" style="display: flex; margin: auto;"/>
   <div v-else>
-    <v-img :src="committee.banner_url" max-height="300" cover style="display: block; width: 100%;"/>
+    <v-img :src="committee.banner_url ?? undefined" max-height="300" cover style="display: block; width: 100%;"/>
     <v-container>
       <v-row>
         <v-col cols="12" sm="2">
-          <v-img :src="committee.logo_url" max-height="200" style="width: 100%;"/>
+          <v-img :src="committee.logo_url ?? undefined" max-height="200" style="width: 100%;"/>
         </v-col>
         <v-col>
           <v-card-title> <h1> {{ committee.fullname }} </h1> </v-card-title>

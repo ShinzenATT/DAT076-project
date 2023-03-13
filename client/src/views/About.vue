@@ -28,42 +28,42 @@
         <v-spacer></v-spacer>
         <v-col>
           <v-img
-            src="@/assets/logos/Ikon_DESIGN.png"
+            src="@/assets/icons/Ikon_DESIGN.png"
             max-height="170"
           />
           <p>Designingenjör <br> (DEI)</p>
         </v-col>
         <v-col>
           <v-img
-            src="@/assets/logos/Ikon_MASKIN.png"
+            src="@/assets/icons/Ikon_MASKIN.png"
             max-height="170"
           />
           <p>Maskiningenjör <br> (MI)</p>
         </v-col>
         <v-col>
           <v-img
-            src="@/assets/logos/Ikon_MEKATRONIK.png"
+            src="@/assets/icons/Ikon_MEKATRONIK.png"
             max-height="170"
           />
           <p>Mekatronikingenjör <br> (MEI)</p>
         </v-col>
         <v-col>
           <v-img
-            src="@/assets/logos/Ikon_ELEKTRO.png"
+            src="@/assets/icons/Ikon_ELEKTRO.png"
             max-height="170"
           />
           <p>Elektroingenjör <br> (EI)</p>
         </v-col>
         <v-col>
           <v-img
-            src="@/assets/logos/Ikon_DATA.png"
+            src="@/assets/icons/Ikon_DATA.png"
             max-height="170"
           />
           <p>Dataingenjör <br> (DAI)</p>
         </v-col>
         <v-col>
           <v-img
-            src="@/assets/logos/Ikon_EPI.png"
+            src="@/assets/icons/Ikon_EPI.png"
             max-height="170"
           />
           <p>Ekonomi och <br> produktionsteknik <br> (EPI)</p>

@@ -49,7 +49,7 @@ export default defineComponent( {
     headers : [
       {title: 'Namn', align: 'start', key: 'name'},
       {title: 'E-mail', align: 'end', key: 'email'}
-    ]
+    ] as any
   }),
   async created() {
     const res = await fetch('http://localhost:8080/admin/accounts')

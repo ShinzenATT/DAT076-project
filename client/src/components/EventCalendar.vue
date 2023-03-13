@@ -20,7 +20,7 @@
 
     >
       <v-img
-        :src="event.imagepath"
+        :src="event.imagepath || undefined"
         cover
         height="200px"
       ></v-img>
@@ -36,7 +36,7 @@
       <v-card-item>{{ event?.description }}</v-card-item>
 
 
-      <v-expand-transition>
+      <!--v-expand-transition>
         <div v-show="show">
           <v-divider></v-divider>
 
@@ -44,7 +44,7 @@
             I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
           </v-card-text>
         </div>
-      </v-expand-transition>
+      </v-expand-transition-->
     </v-card>
 
 
@@ -54,58 +54,23 @@
 <script lang="ts">
 
 import {defineComponent} from "vue";
-import {stringify} from "querystring";
+import {Event} from "../../types/Event";
 
 export default defineComponent({
 
   data: () => ({
 
     currentDate: null as Date | null,
-    currEvents: [] as Array<Object> | null,
-    events: [
-      {
-        organizer: "DWA Group 6",
-        name: "Meeting with Robin",
-        location: "lindholmsallén 29",
-        start: new Date(2023, 1, 20),
-        stop: new Date(2023, 1, 21),
-        description: "It's gonne be very najs",
-        imagepath: "src/assets/DKV.png",
-        id: 1
-      },
-      {
-        organizer: "DWA group 6",
-        name: "Coding big codes",
-        location: "lindholmsallén 29",
-        start: new Date(2023, 1, 20),
-        stop: new Date(2023, 1, 21),
-        description: "It's gonne be very najs",
-        imagepath: "src/assets/jesustarzan.jpg",
-        id: 1
-      },
-      {
-        organizer : "DWA group 5",
-        name : "Coding again..",
-        location : "lindholmsallén 29",
-        start : new Date(2023, 1, 22),
-        stop : new Date(2023, 1, 23),
-        description : "It's gonne be very najs IGEN",
-        imagepath : "src/assets/H6.png",
-        id : 2
-      }
-    ],
+    currEvents: [] as Event[] | null,
+    events: [] as Event[],
   }),
 
   async created () {
-    console.log("hello")
-
     const response = await fetch('http://localhost:8080/events', {
       method: 'GET',
 
     });
-    const res = await response.json();
-    this.events = res;
-    console.log("this is events " + res);
+    this.events = await response.json();
   },
 
   computed: {
@@ -130,7 +95,7 @@ export default defineComponent({
   },
 
   methods : {
-    toEventsPage(day : Object) {
+    toEventsPage(day : {id: number}) {
       console.log(day.id)
 
       const events = this.events

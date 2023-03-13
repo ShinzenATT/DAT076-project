@@ -7,7 +7,7 @@
       <v-text-field v-model="styret.email" label="email" color="primary"/>
       <v-text-field v-model="styret.imagepath" label="Bild-filepath" color="primary"/>
       <v-textarea v-model="styret.description" label="Beskrivning" color="primary"/>
-      <v-btn style="bottom: 10px;" :loading="loading" type="submit" :color="color"> Spara </v-btn> <span :style="'color: ' + $vuetify.theme.current.colors.error"> {{ this.error }}</span>
+      <v-btn style="bottom: 10px;" :loading="loading" type="submit" :color="color"> Spara </v-btn> <span :style="'color: ' + $vuetify.theme.current.colors.error"> {{ error }}</span>
     </v-form>
   </v-card>
 </template>

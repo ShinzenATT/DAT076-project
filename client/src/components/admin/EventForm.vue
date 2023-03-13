@@ -27,13 +27,13 @@
         style="margin-top: 25px"
         v-model="event.organizer"
         label="Arrangör"
-        item-title="fullname"
-        item-value="fullname"
+        item-title="name"
+        item-value="name"
         :items="possibleHosts"
       ></v-select>
 
       <v-btn type="submit" :color="color" :loading="loading" style="bottom: 10px"> Spara </v-btn>
-      <span :style="'color:' + $vuetify.theme.current.colors.error"> {{ this.error }} </span>
+      <span :style="'color:' + $vuetify.theme.current.colors.error"> {{ error }} </span>
 
       <v-btn v-if="!createNew" color="red" icon="mdi-delete" style="position: absolute; bottom: 5px; right: 10px;" @click="deleteItem"/>
     </v-form>
@@ -47,6 +47,8 @@ import {defineComponent} from "vue";
 import {Event} from "../../../types/Event";
 import '@vuepic/vue-datepicker/dist/main.css';
 import VueDatePicker from "@vuepic/vue-datepicker";
+import accounts from "@/views/admin/Accounts.vue";
+import {Account} from "../../../types/Account";
 
 export default defineComponent({
 
@@ -60,7 +62,7 @@ export default defineComponent({
   data: () => ({
     error: '',
     success: false,
-    possibleHosts: [] as any[],
+    possibleHosts: [] as Account[],
     loading: false,
     event: {} as Event
   }),
@@ -76,7 +78,7 @@ export default defineComponent({
     }
   },
   async created(){
-    this.possibleHosts = await fetch("http://localhost:8080/committee/getCommitteesInfo").then(res => res.json());
+    this.possibleHosts = await fetch("http://localhost:8080/admin/accounts").then(res => res.json());
     if(this.createNew){
       this.event = {
         name: '',
@@ -98,11 +100,19 @@ export default defineComponent({
       this.error = ''
       this.success = false
 
+      const match = this.possibleHosts.find(e => this.event.organizer === e.name)
+      if(!match){
+        this.error = 'Organizer must be selected'
+        return
+      }
+      this.event.organizer = match.id
+
       if(this.createNew){
         await this.post()
       } else {
         await this.put()
       }
+      this.event.organizer = match.name
 
       if(!this.error)
         this.$emit('update:modelValue', this.event)
@@ -111,12 +121,7 @@ export default defineComponent({
     },
 
     async put(){
-      for(let i = 0; i < this.possibleHosts.length; i++){
-        if(this.event.organizer == this.possibleHosts[i].fullname){
-          this.event.imagepath = this.possibleHosts[i].banner_url;
-          this.event.organizer = this.possibleHosts[i].id;
-        }
-      }
+
       const res = await fetch('http://localhost:8080/events/', {
         method: 'PUT',
         headers: {'content-type': 'application/json'},
@@ -132,11 +137,7 @@ export default defineComponent({
       this.success = true
     },
     async post(){
-      for(let i = 0; i < this.possibleHosts.length; i++){
-        if(this.event.organizer == this.possibleHosts[i].fullname){
-          this.event.organizer = this.possibleHosts[i].id;
-        }
-      }
+
       const res = await fetch('http://localhost:8080/events/', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },

@@ -56,14 +56,19 @@ export default defineComponent({
         }
     },
     async created(){
-      const res = await fetch('http://localhost:8080/committee/' + this.$router.currentRoute.value.params.name)
-      if(!res.ok){
-        this.error = true
-        return
+      this.$watch(() => this.$route.params, (to, from) => this.load(to.name as string))
+      await this.load(this.$route.params.name as string)
+    },
+  methods: {
+      async load(target: string){
+        const res = await fetch('http://localhost:8080/committee/' + target)
+        if(!res.ok){
+          this.error = true
+          return
+        }
+        this.committee = await res.json()
+        this.loading = false
       }
-      this.committee = await res.json()
-      this.loading = false
-      console.log(this.committee)
-    }
+  }
 })
 </script>

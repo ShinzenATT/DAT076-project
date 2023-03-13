@@ -51,19 +51,19 @@
       <v-btn flat
              stacked
              width="160"
-             height="170"
+             height="140"
              href="https://www.chalmers.se/utbildning/hitta-program/datateknik-hogskoleingenjor/"
              class="programButton"
              :ripple="false">
         <v-img width="160" src="@/assets/icons/Ikon_DATA.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Data </b>
       </v-btn>
-      <v-btn class="programButton" flat stacked style="width: 160px; height: 170px;" :ripple="false"
+      <v-btn class="programButton" flat stacked style="width: 160px; height: 140px;" :ripple="false"
              href="https://www.chalmers.se/utbildning/hitta-program/elektroteknik-hogskoleingenjor/">
         <v-img width="160" src="@/assets/icons/Ikon_ELEKTRO.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Elektro </b>
       </v-btn>
-      <v-btn class="programButton" flat stacked :ripple="false"
+      <v-btn class="programButton" flat stacked style="width: 160px; height: 140px;" :ripple="false"
              href="https://www.chalmers.se/utbildning/hitta-program/mekatronik-hogskoleingenjor/">
         <v-img width="160" src="@/assets/icons/Ikon_MEKATRONIK.png"/>
         <b style="margin-top: 7px; color: white; font-family: 'Lemon/Milk', sans-serif"> Mekatronik </b>
@@ -158,12 +158,12 @@
                         z-index: 0;
                         background-color: #E0218A;
                         background-size: cover;
-                        clip-path: polygon(50% 10%, 100% 0, 100% 100%, 0 100%, 0 0);
+                        clip-path: polygon(50% 5%, 100% 0, 100% 100%, 0 100%, 0 0);
                         max-width: 100%;
                         padding: 100px 30px;"
                id="utskott"
   >
-    <h2 style="
+    <h2 id="utskottTitle" style="
               position: relative;
               font-size: x-large;
               color: white;
@@ -172,9 +172,9 @@
       Utskott
     </h2>
     <div id="utskottCards" style="display: flex; flex-wrap: wrap; top: 200px; position: relative">
-        <v-card id="Jamh" class="grow" :to="'utskott/' + getUtskott('JämH').name">
+        <v-card id="Jamh" class="grow" :to="'utskott/' + getUtskott('jamh').name">
           <v-img style="border-radius: 20px"
-                 :src="getUtskott('JämH').banner_url"
+                 :src="getUtskott('jamh').banner_url"
                  cover
                  height="100%"
           ></v-img>
@@ -183,15 +183,16 @@
                   font-family: 'Lemon/Milk light', sans-serif;
                   font-weight: lighter;
                   font-size: 60px;
+                  text-shadow: 1px 1px 1px black;
                   color: white;
                   top: -20px">
-            {{ getUtskott('JämH').name }}
+            {{ getUtskott('jamh').name }}
             </v-card-title>
         </v-card>
 
-    <v-card id="Harm" class="grow" :to="'utskott/' + getUtskott('Harm').name">
+    <v-card id="Harm" class="grow" :to="'utskott/' + getUtskott('harm').name">
       <v-img style="border-radius: 20px"
-             :src="getUtskott('Harm').banner_url"
+             :src="getUtskott('harm').banner_url"
              cover
              height="100%"
       ></v-img>
@@ -200,14 +201,15 @@
               position: absolute;
               font-size: 60px;
               font-weight: lighter;
+              text-shadow: 1px 1px 1px black;
               color: white;
               top: -20px;
               ">
-        {{ getUtskott('Harm').name }}</v-card-title>
+        {{ getUtskott('harm').name }}</v-card-title>
     </v-card>
-    <v-card id="Snh" class="grow" :to="'utskott/' + getUtskott('SnH').name">
+    <v-card id="Snh" class="grow" :to="'utskott/' + getUtskott('snh').name">
       <v-img style="border-radius: 20px"
-             :src="getUtskott('SnH').banner_url"
+             :src="getUtskott('snh').banner_url"
              cover
              height="100%"
       ></v-img>
@@ -216,9 +218,10 @@
               top: -20px;
               position: absolute;
               font-size: 60px;
+              text-shadow: 1px 1px 1px black;
               font-weight: lighter;
               color: white;
-              ">{{ getUtskott('SnH').name }}</v-card-title>
+              ">{{ getUtskott('snh').name }}</v-card-title>
     </v-card>
     </div>
 
@@ -329,10 +332,6 @@ export default defineComponent ({
   transform: scale(1.03);
 }
 
-#buttonGroup {
-  top: 60px;
-}
-
 .programButton {
   margin: 30px;
   background-color: transparent !important;
@@ -401,7 +400,7 @@ h4 {
   }
 
   #buttonGroup {
-    top: 0 !important;
+    top: 10px !important;
     height: 100%;
   }
 
@@ -417,6 +416,11 @@ h4 {
     align-items: center;
     top: 0 !important;
   }
+
+  #utskottTitle {
+    top: 10px !important;
+  }
+
   #Jamh {
     top: 0;
     left: 0;
@@ -437,9 +441,6 @@ h4 {
     margin: 10%;
 
   }
-
-
-
 
   #aboutus {
 

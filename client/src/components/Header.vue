@@ -3,6 +3,7 @@
   <v-app-bar id="header" class="d-flex justify-md-space-between" elevation="0">
       <router-link to="/">
         <v-img
+          style="left: 5px;"
           contain
           class="align-self-stretch"
           width="65"

@@ -30,6 +30,14 @@ styretRouter.put('/', async (req:Request<{}, {}, Styret>, res: Response) => {
     }
 });
 
+styretRouter.get('/:name', async (req: Request<{name: string}, {}, {}>, res: Response) => {
+    try {
+        res.send(await styretService.getStyretInfo(req.params.name))
+    } catch (e){
+        res.status(404).send(e)
+    }
+})
+
 styretRouter.delete('/:id', async (req: Request<{id: string}, {}, {}>, res) => {
     const id = parseInt(req.params.id)
     if(isNaN(id)){

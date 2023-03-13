@@ -40,6 +40,10 @@ const routes = [
         component: () => import(/* webpackChunkName: "committee info" */ '@/views/CommitteeInfo.vue')
       },
       {
+        path: '/utskott/:name',
+        component: () => import(/* webpackChunkName: "committee info" */ '@/views/CommitteeInfo.vue')
+      },
+      {
         path: '/styret',
         name: 'Styret',
         // route level code-splitting
@@ -88,6 +92,10 @@ const routes = [
           {
             path: 'events',
             component: () => import(/* webpackChunkName: "Events" */ '@/views/admin/EventsAdmin.vue')
+          },
+          {
+            path: 'styret',
+            component: () => import(/* webpackChunkName: "Committees" */ '@/views/admin/StyretAdmin.vue')
           }
         ]
       },

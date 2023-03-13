@@ -3,7 +3,7 @@ export class Styret {
     post: string;
     email: string;
     description : string;
-    imagepath : string;
+    imagepath : string | null;
     readonly id : number;
 
     constructor(data: Styret) {

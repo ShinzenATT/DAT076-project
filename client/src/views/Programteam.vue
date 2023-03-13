@@ -7,12 +7,12 @@
         border: none"
   >
   <v-container class="text-center">
-    <h1 class="text-h2 font-weight-regular pb-15">Programteam</h1>
+    <h1 style="font-family: 'Lemon/Milk', sans-serif; font-size: 60px; margin-bottom: 100px">Programteam</h1>
 
     <v-row>
       <v-col cols="4">
         <a href="https://www.chalmers.se/utbildning/hitta-program/datateknik-hogskoleingenjor/">
-          <v-img src="@/assets/logos/Ikon_DATA.png" class="mr-3"/>
+          <v-img src="@/assets/icons/Ikon_DATA.png" class="mr-3"/>
         </a>
       </v-col>
       <v-col class="text-start">
@@ -101,7 +101,7 @@
       </v-col>
       <v-col cols="4">
         <a href="https://www.chalmers.se/utbildning/hitta-program/design-och-produktutveckling-hogskoleingenjor/">
-          <v-img src="@/assets/logos/Ikon_DESIGN.png" class="ml-3"/>
+          <v-img src="@/assets/icons/Ikon_DESIGN.png" class="ml-3"/>
         </a>
       </v-col>
     </v-row>
@@ -116,7 +116,7 @@
     <v-row>
       <v-col cols="4">
         <a href="https://www.chalmers.se/utbildning/hitta-program/elektroteknik-hogskoleingenjor/">
-          <v-img src="@/assets/logos/Ikon_ELEKTRO.png" class="mr-3"/>
+          <v-img src="@/assets/icons/Ikon_ELEKTRO.png" class="mr-3"/>
         </a>
       </v-col>
       <v-col class="text-start">
@@ -205,7 +205,7 @@
       </v-col>
       <v-col cols="4">
         <a href="https://www.chalmers.se/utbildning/hitta-program/ekonomi-och-produktionsteknik-hogskoleingenjor/">
-          <v-img src="@/assets/logos/Ikon_EPI.png" class="ml-3"/>
+          <v-img src="@/assets/icons/Ikon_EPI.png" class="ml-3"/>
         </a>
       </v-col>
     </v-row>
@@ -220,7 +220,7 @@
     <v-row>
       <v-col cols="4">
         <a href="https://www.chalmers.se/utbildning/hitta-program/maskinteknik-hogskoleingenjor/">
-          <v-img src="@/assets/logos/Ikon_MASKIN.png" class="mr-3"/>
+          <v-img src="@/assets/icons/Ikon_MASKIN.png" class="mr-3"/>
         </a>
       </v-col>
       <v-col class="text-start">
@@ -309,7 +309,7 @@
       </v-col>
       <v-col cols="4">
         <a href="https://www.chalmers.se/utbildning/hitta-program/mekatronik-hogskoleingenjor/">
-          <v-img src="@/assets/logos/Ikon_MEKATRONIK.png" class="ml-3"/>
+          <v-img src="@/assets/icons/Ikon_MEKATRONIK.png" class="ml-3"/>
         </a>
       </v-col>
     </v-row>
@@ -333,6 +333,10 @@ h2 {
 
 h3 {
   font-weight: 500;
+}
+
+h1, h2, h3, h5, h6 {
+  font-family: 'Lemon/Milk', sans-serif;
 }
 
 </style>

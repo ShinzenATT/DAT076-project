@@ -177,6 +177,7 @@
     >
       Utskott
     </h2>
+
     <!-- Div containing "utskott", custom growing with flex -->
     <!-- Uses getUtskott() to fetch information about the current utskott -->
     <!-- This function is used since it's not possible to loop with v-for -->
@@ -234,9 +235,9 @@
               ">{{ getUtskott('snh').name }}</v-card-title>
     </v-card>
     </div>
-
-
   </v-container>
+
+  <!-- 'Where you accepted?' section -->
   <v-container style="text-align: center;
                         position: relative;"
 
@@ -260,8 +261,11 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
+
+// Importing the calendar component
 import EventCalendar from "@/components/EventCalendar.vue";
 
+// Defining methods for EventCalendar
 export default defineComponent ({
   components: {
     EventCalendar
@@ -278,7 +282,6 @@ export default defineComponent ({
     this.utskottData = res.filter(e => e.type === 'utskott')
   },
   methods: {
-
     getUtskott(name: String){
       for(let i = 0; i < this.utskottData.length; i++){
         if(name == this.utskottData[i].name){
@@ -287,16 +290,12 @@ export default defineComponent ({
       }
       return "not found";
     }
-
   }
 });
-
-
 </script>
 
 <style>
 @import url("https://fonts.cdnfonts.com/css/lemonmilk");
-
 
 #mainPage {
   clear: bottom;
@@ -310,12 +309,12 @@ export default defineComponent ({
   top: -100px;
   overflow: visible
 }
+
 #Harm {
   border-radius: 25px;
   top: 10px;
   width: 50%;
   overflow: visible
-
 }
 
 #Snh {
@@ -325,7 +324,6 @@ export default defineComponent ({
   top: -216px;
   left: 116px;
   overflow: visible
-
 }
 
 .grow {
@@ -361,7 +359,6 @@ export default defineComponent ({
   transform: scale(1.02);
 }
 
-
 #calendar{
   position: relative;
   float: left;
@@ -380,9 +377,7 @@ export default defineComponent ({
 
 .subTitle{
   color: #E0218A;
-
 }
-
 
 h1, h2, h3, h5, h6 {
   font-family: 'Lemon/Milk', sans-serif;
@@ -443,15 +438,11 @@ h4 {
     top: 0;
     width: 50%;
     margin: 10%;
-
   }
 
   #aboutus {
-
     top: 0;
-
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%) !important;
-
   }
 
   #calendar{
@@ -471,8 +462,5 @@ h4 {
     display: grid;
     justify-content: center
   }
-
-
 }
-
 </style>

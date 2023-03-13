@@ -1,4 +1,6 @@
-<!-- Frontend implementation for 'Committee information'-page -->
+<!-- Dynamic frontend implementation for all the committee-information pages -->
+<!-- The selected committees information is fetched from the database. -->
+<!-- Details on this is found below, in the script-section of this .vue file -->
 
 <template>
   <v-progress-circular v-if="loading" size="50" width="6" indeterminate color="primary" style="display: flex; margin: auto;"/>
@@ -38,9 +40,12 @@
 </style>
 
 <script lang="ts">
+
+// Imports
 import { Committee } from 'types/committees'
 import {defineComponent} from 'vue'
 
+// Defining the methods for fetching data about the selected committee
 export default defineComponent({
     name: 'committeeInfo',
     data(){

@@ -1,4 +1,7 @@
+<!-- Static page presenting information about 'SAMO' (student work environment representative) -->
+
 <template>
+  <!-- A divider to accentuate from the header -->
   <hr
     style="
         margin: 30px 0;
@@ -6,16 +9,18 @@
         background: black;
         border: none"
   >
-  <v-container class="pt-16">
-    <v-row>
+  <v-container class="pa-16">
+    <v-row class="align-center">
+      <!-- Image of Moa -->
       <v-img
+        max-width="500"
         src="@/assets/Samo_Moa_cropped-1536x1536.jpg"
-      >
-      </v-img>
+      ></v-img>
       <v-col
         cols="7"
-        class="text-center ml-10"
+        class="text-center ml-16"
       >
+        <!-- Description -->
         <h2 class="text-h4 mb-7">
           Studerande arbetsmiljöombud (SAMO)
         </h2>

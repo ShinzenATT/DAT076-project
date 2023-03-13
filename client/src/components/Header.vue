@@ -1,6 +1,8 @@
-<template>
+<!-- Frontend implementation for the header/navbar -->
 
+<template>
   <v-app-bar id="header" class="d-flex justify-md-space-between" elevation="0">
+    <!-- Inserts the section-logo and routes (a click on) it to the 'Home'-view -->
       <router-link to="/">
         <v-img
           style="left: 5px;"
@@ -35,24 +37,22 @@
 
 <script lang="ts">
 
+// Imports
 import {defineComponent} from "vue";
 import Dropdown from "./Dropdown.vue"
 import DropdownSmall from "./DropdownSmall.vue"
 
-
-
-
-
+// Defining the navbar items
   export default defineComponent({
     components: {Dropdown, DropdownSmall},
-
 
     data() {
       return {
 
+        // Creates the drop-down menus in the navbar and routes them appropriately
         routeArr : {
-          item1: {
 
+          item1: {
             title: "Sektionen",
             content: [
               {routeName: 'Om H', link: '/about'},
@@ -61,6 +61,7 @@ import DropdownSmall from "./DropdownSmall.vue"
               {routeName: 'SAMO', link: '/SAMO'}
             ]
           },
+
           item2: {
             title: "Kommitteer",
             content: [
@@ -77,6 +78,7 @@ import DropdownSmall from "./DropdownSmall.vue"
               {routeName: 'SkHål', link: '/kommitteer/skhal'}
             ]
           },
+
           item3: {
             title: "Utskott",
             content: [
@@ -85,6 +87,7 @@ import DropdownSmall from "./DropdownSmall.vue"
               {routeName: 'Jämlikhetsutskottet', link: '/utskott/jamh'}
             ]
           },
+
           item4: {
             title: "Kontakt",
             content: [
@@ -95,11 +98,8 @@ import DropdownSmall from "./DropdownSmall.vue"
         }
       }
     }
-
   })
-
 </script>
-
 
 <style>
 

@@ -2,13 +2,16 @@
 
 <template>
   <div class="about">
+
+    <!-- Inserting the cover image -->
     <v-img src="@/assets/about_cover.jpg"
            cover
            style="top: -64px"
            max-height="60vh"
     >
-
     </v-img>
+
+    <!-- Presenting the text -->
     <v-container class="text-center">
       <h1 style="font-size: 70px">Om H-sektionen</h1>
       <p>
@@ -20,12 +23,16 @@
         Detta skedde på grund avatt driftteknikerna försvann och att det nu bara utbildades högskoleingenjörer på Chalmers Lindholmen.
       </p>
       <h3>De utbildningar som idag finns på sektionen är:</h3>
+
+      <!-- Logos for each program -->
       <v-row
         justify="center"
         class="mb-6"
         no-gutters
       >
         <v-spacer></v-spacer>
+
+        <!-- Designingenjör (DEI) -->
         <v-col>
           <v-img
             src="@/assets/icons/Ikon_DESIGN.png"
@@ -33,6 +40,8 @@
           />
           <p>Designingenjör <br> (DEI)</p>
         </v-col>
+
+        <!-- Maskiningenjör (MI) -->
         <v-col>
           <v-img
             src="@/assets/icons/Ikon_MASKIN.png"
@@ -40,6 +49,8 @@
           />
           <p>Maskiningenjör <br> (MI)</p>
         </v-col>
+
+        <!-- Mekatronikingenjör (MEI) -->
         <v-col>
           <v-img
             src="@/assets/icons/Ikon_MEKATRONIK.png"
@@ -47,6 +58,8 @@
           />
           <p>Mekatronikingenjör <br> (MEI)</p>
         </v-col>
+
+        <!-- Elektroingenjör (EI) -->
         <v-col>
           <v-img
             src="@/assets/icons/Ikon_ELEKTRO.png"
@@ -54,6 +67,8 @@
           />
           <p>Elektroingenjör <br> (EI)</p>
         </v-col>
+
+        <!-- Dataingenjör (DAI) -->
         <v-col>
           <v-img
             src="@/assets/icons/Ikon_DATA.png"
@@ -61,6 +76,8 @@
           />
           <p>Dataingenjör <br> (DAI)</p>
         </v-col>
+
+        <!-- Ekonomi och produktionsteknik (EPI) -->
         <v-col>
           <v-img
             src="@/assets/icons/Ikon_EPI.png"
@@ -70,14 +87,15 @@
         </v-col>
         <v-spacer></v-spacer>
       </v-row>
+
+      <!-- Map & Info about campus Lindholmen -->
       <v-row
         align="center"
         class="mb-10"
       >
         <v-col>
-          <v-img
-            src="@/assets/Lindholmenkarta_Sep2018_SV-_croped1.png"
-            max-height="300"
+          <v-img src="@/assets/Lindholmenkarta_Sep2018_SV-_croped1.png"
+                 max-height="300"
           />
         </v-col>
         <v-col>
@@ -96,6 +114,9 @@
         background: #e0218a;
         border: none"
       >
+
+      <!-- H-istory about the section -->
+      <!-- Each important point is presented next to a small material design icon -->
       <h2>
         H-istoria
       </h2>
@@ -103,8 +124,9 @@
         Alla som läser till högskoleingenjör på Campus Lindholmen tillhör H-sektionen (Ingenjörsteknologsektionen).
         Här är bakgrunden till hur vi blev en egen sektion:
       </p>
-
       <v-row>
+        <!-- This column contains all the historical points and is forced to take 9 (out of 12) columns -->
+        <!-- This is done to have the logo which is inserted on the same row take an appropriate amount of space -->
         <v-col
           cols="9"
           class="text-start pb-10"

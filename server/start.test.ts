@@ -6,11 +6,25 @@ import fetch from "node-fetch";
 let server: Server;
 
 beforeEach(() => {
-    server = app.listen(8080, () => console.log("server started at port 8080"));
+    return new Promise((resolve, reject) => {
+        server = app.listen(8080, () => {
+            console.log("server started at port 8080")
+            resolve(undefined)
+        });
+    })
 });
 
 afterEach(() => {
-    server.close(e => console.log(e ?? "server closed"));
+    return new Promise((resolve, reject) => {
+    server.close(e => {
+        console.log(e ?? "server closed")
+        if(e){
+            reject(e)
+        } else{
+            resolve(undefined)
+        }
+    })
+    })
 });
 
 test("Event routes", async () => {

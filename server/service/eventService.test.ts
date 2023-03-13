@@ -4,15 +4,16 @@ import db, {accounts, events} from "../db/database";
 import {Events} from "../db/generated";
 
 beforeAll(async () => {
-    await accounts(db).insert({name: "user", email: "a@b.c", password: "test"})
+    await accounts(db).delete({})
+    await accounts(db).insert({name: "user", email: "a@b.c", password: "test", id: 1})
     await events(db).delete({});
 })
 
-afterEach(async () => await events(db).delete({}));
+//afterEach(async () => await events(db).delete({}));
 
 test("Get event", async () => {
     const event ={
-        id: 0,
+        id: 1,
         name: 'test',
         description: 'desc',
         organizer: 'user',
@@ -32,6 +33,7 @@ test("Get event", async () => {
         hostid: 1
     })
     expect(await service.getEvents()).toStrictEqual([new Event(event)]);
+    await events(db).delete({})
 });
 
 /**
@@ -63,6 +65,7 @@ test("Create event", async () => {
     event.id = 2;
     event.organizer = 'user';
     expect((await service.getEvents())[1]).toStrictEqual(new Event(event));
+    await events(db).delete({})
 });
 
 test("Edit event", async () => {
@@ -92,6 +95,7 @@ test("Edit event", async () => {
     event.organizer = 'user'
 
     expect((await service.getEvents())[0]).toStrictEqual(new Event(event));
+    await events(db).delete({})
 });
 
 test("Invalid timestamp test", async () => {
@@ -128,8 +132,8 @@ test("Invalid timestamp test", async () => {
         name: event.name,
         location: event.location,
         description: event.description,
-        start: new Date(event.start),
-        stop: new Date(event.stop),
+        start: new Date(),
+        stop: new Date(),
         imagepath: event.imagepath,
         hostid: 1
     } as Events)
@@ -140,6 +144,7 @@ test("Invalid timestamp test", async () => {
         trip = true;
     }
     expect(trip).toBeTruthy();
+    await events(db).delete({})
 })
 
 test("Event not found test", async () => {
@@ -173,6 +178,7 @@ test("Event not found test", async () => {
         expect(error.message).toStrictEqual("Event not found");
     }
     expect(trip).toBeTruthy();
+    await events(db).delete({})
 });
 
 test("Delete event", async () => {
@@ -199,6 +205,7 @@ test("Delete event", async () => {
     await service.deleteEvent(1);
 
     expect((await service.getEvents()).length).toStrictEqual(0);
+    await events(db).delete({})
 });
 
 test("Full event service test", async () => {
@@ -230,4 +237,5 @@ test("Full event service test", async () => {
 
     await service.deleteEvent(0);
     expect((await service.getEvents()).length).toStrictEqual(0);
+    await events(db).delete({})
 });

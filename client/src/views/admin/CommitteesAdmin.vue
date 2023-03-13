@@ -45,7 +45,7 @@ export default defineComponent( {
     headers: [
       {title: 'Namn', align: 'start', key: 'name'},
       {title: 'Typ', key: 'type'}
-    ]
+    ] as any
   }),
   async created(){
     this.committees = await fetch("http://localhost:8080/committee/").then(e => e.json())

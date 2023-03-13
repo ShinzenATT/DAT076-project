@@ -1,3 +1,5 @@
+<!-- Static page containing contact information for all the programmes -->
+
 <template>
   <hr
     style="
@@ -9,6 +11,7 @@
   <v-container class="text-center" style="background-color: #E0218A;">
     <h1 style="font-family: 'Lemon/Milk', sans-serif; font-size: 60px; margin-bottom: 100px">Programteam</h1>
 
+    <!-- DATATEKNIK -->
     <v-row>
       <v-col cols="4">
         <a href="https://www.chalmers.se/utbildning/hitta-program/datateknik-hogskoleingenjor/">
@@ -61,6 +64,7 @@
         border: none"
     >
 
+    <!-- DESIGN & PRODUKTUTVECKLING -->
     <v-row style="background-color: #E667AD;">
       <v-col class="text-start">
         <h2 class="pb-4">Design och produktutveckling, högskoleingenjör 180hp</h2>
@@ -113,6 +117,7 @@
         border: none"
     >
 
+    <!-- ELEKTROTEKNIK -->
     <v-row>
       <v-col cols="4">
         <a href="https://www.chalmers.se/utbildning/hitta-program/elektroteknik-hogskoleingenjor/">
@@ -165,6 +170,7 @@
         border: none"
     >
 
+    <!-- EKONOMI & PRODUKTIONSTEKNIK -->
     <v-row style="background-color: #E667AD;">
       <v-col class="text-start">
         <h2 class="pb-4">Ekonomi och produktionsteknik, högskoleingejör 180hp</h2>
@@ -217,6 +223,7 @@
         border: none"
     >
 
+    <!-- MASKINTEKNIK -->
     <v-row>
       <v-col cols="4">
         <a href="https://www.chalmers.se/utbildning/hitta-program/maskinteknik-hogskoleingenjor/">
@@ -269,6 +276,7 @@
         border: none"
     >
 
+    <!-- MEKATRONIK -->
     <v-row style="background-color: #E667AD">
       <v-col class="text-start">
         <h2 class="pb-4">Mekatronik, högskoleingenjör 180hp</h2>
@@ -324,7 +332,6 @@ export default {
 </script>
 
 <style scoped>
-
 
 h2 {
   font-size: 30px;

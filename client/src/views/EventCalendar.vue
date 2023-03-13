@@ -1,3 +1,5 @@
+<!-- Routes to the dynamic component 'EventCalendar' -->
+
 <template>
   <EventCalendar />
 </template>

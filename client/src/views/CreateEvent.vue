@@ -1,3 +1,5 @@
+<!-- Component for creating new events in the event calendar -->
+
 <template>
   <v-card flat style="background-image: url('/groupimg.jpg');
                         width: 100%;
@@ -107,10 +109,12 @@
 
 <script lang="ts">
 
+// Imports
 import '@vuepic/vue-datepicker/dist/main.css';
 import VueDatePicker from "@vuepic/vue-datepicker";
 import {defineComponent} from "vue";
 
+// Defining the date-picker
 export default defineComponent({
   components: {VueDatePicker},
 

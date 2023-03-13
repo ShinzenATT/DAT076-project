@@ -1,3 +1,5 @@
+<!-- Dynamic page presenting committees, associations and others -->
+
 <template>
     <v-container>
         <v-progress-circular v-if="loading" size="50" width="6" color="primary" indeterminate style="display: flex; margin: auto;"/>
@@ -86,7 +88,6 @@
     .v-card{
         margin: 10px 0;
     }
-
 </style>
 
 <script lang="ts">

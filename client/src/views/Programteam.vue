@@ -6,7 +6,7 @@
         background: black;
         border: none"
   >
-  <v-container class="text-center">
+  <v-container class="text-center" style="background-color: #E0218A;">
     <h1 style="font-family: 'Lemon/Milk', sans-serif; font-size: 60px; margin-bottom: 100px">Programteam</h1>
 
     <v-row>
@@ -61,7 +61,7 @@
         border: none"
     >
 
-    <v-row>
+    <v-row style="background-color: #E667AD;">
       <v-col class="text-start">
         <h2 class="pb-4">Design och produktutveckling, högskoleingenjör 180hp</h2>
         <v-row class="text-start">
@@ -165,7 +165,7 @@
         border: none"
     >
 
-    <v-row>
+    <v-row style="background-color: #E667AD;">
       <v-col class="text-start">
         <h2 class="pb-4">Ekonomi och produktionsteknik, högskoleingejör 180hp</h2>
         <v-row class="text-start">
@@ -269,7 +269,7 @@
         border: none"
     >
 
-    <v-row>
+    <v-row style="background-color: #E667AD">
       <v-col class="text-start">
         <h2 class="pb-4">Mekatronik, högskoleingenjör 180hp</h2>
         <v-row class="text-start">

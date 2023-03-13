@@ -12,7 +12,6 @@
                         height: 75vh;
                         border-radius: 0;
                         background-size: cover, contain">
-
       <h1 style="text-align: center;
                   color: #E0218A;
                   position: relative;
@@ -179,6 +178,10 @@
     >
       Utskott
     </h2>
+    <!-- Div containing "utskott", custom growing with flex -->
+    <!-- Uses getUtskott() to fetch information about the current utskott -->
+    <!-- This function is used since it's not possible to loop with v-for -->
+    <!-- These cards are of custom class "grow" which gives them a nice hover effect-->
     <div id="utskottCards" style="display: flex; flex-wrap: wrap; top: 200px; position: relative">
         <v-card id="Jamh" class="grow" :to="'utskott/' + getUtskott('jamh').name">
           <v-img style="border-radius: 20px"
@@ -254,13 +257,7 @@
 
 
   </v-container>
-
-
 </template>
-
-<style>
-
-</style>
 
 <script lang="ts">
 import {defineComponent} from "vue";
@@ -271,7 +268,7 @@ export default defineComponent ({
     EventCalendar
   },
   data: () => ({
-    dialog: false,
+    dialog: false as boolean,
     kommitteerData: [] as any[],
     utskottData: [] as any[],
   }),

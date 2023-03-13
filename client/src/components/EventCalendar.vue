@@ -99,7 +99,7 @@ export default defineComponent({
   async created () {
     console.log("hello")
 
-    const response = await fetch('http://localhost:8080/event', {
+    const response = await fetch('http://localhost:8080/events', {
       method: 'GET',
 
     });

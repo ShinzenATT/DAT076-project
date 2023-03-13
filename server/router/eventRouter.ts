@@ -23,9 +23,6 @@ eventRouter.post("/", async (
     req: Request<{}, {}, EventSerialized>,
     res: Response<Event | string>
 ) => {
-    console.log("event invoked")
-    console.log(req.body)
-    console.log(req.headers)
     try {
         const newEvent = await eventService.createEvent(req.body);
         res.status(201).send(newEvent);
@@ -43,13 +40,14 @@ eventRouter.put('/', async (req: Request<{},{}, EventSerialized>, res: Response<
     }
 });
 
-eventRouter.delete('/', async (req: Request<{},{}, {id: number}>, res: Response ) => {
-    try {
-        await eventService.deleteEvent(req.body.id);
-    } catch (error: any) {
-        console.warn(error.message)
+eventRouter.delete('/:id', async (req: Request<{id:string},{},{}>, res: Response ) => {
+    const id = parseInt(req.params.id);
+    if(isNaN(id)){
+        res.status(400).send("param is not a number")
+        return
     }
 
+    await eventService.deleteEvent(id);
     res.send();
 });
 

@@ -4,12 +4,13 @@
   <div class="about">
     <v-img src="@/assets/about_cover.jpg"
            cover
-           max-height="45vh"
+           style="top: -64px"
+           max-height="60vh"
     >
 
     </v-img>
     <v-container class="text-center">
-      <h1 class="text-h2">Om H-sektionen</h1>
+      <h1 style="font-size: 70px">Om H-sektionen</h1>
       <p>
         Teknologsektionen IoD såg sitt ljus år 1990 då de som läste till Sjöbefäl bröt sig ur Ingenjörs- och Sjöbefälsteknologsektionen.<br>
         IoD fick den vackraste sektionsfärgen Cerise tilldelad sig och så har det varit sedan dess.
@@ -197,6 +198,10 @@ export default {
 </script>
 
 <style scoped>
+
+h1, h2, h3, h5, h6 {
+  font-family: 'Lemon/Milk', sans-serif;
+}
 
 h1 {
   margin: 15px;

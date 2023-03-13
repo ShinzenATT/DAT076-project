@@ -4,7 +4,7 @@
       <v-text-field v-model="event.name" label="Namn" counter="20" color="primary"/>
       <v-text-field v-model="event.location" counter="20" label="Plats" color="primary"/>
       <v-textarea v-model="event.description" label="Beskrivning av Arr" counter="400" color="primary"/>
-      <v-row style="text-align: center">
+      <v-row style="text-align: center;">
         <v-spacer/>
         <v-col
           cols="12"
@@ -24,17 +24,18 @@
       </v-row>
 
       <v-select
+        style="margin-top: 25px"
         v-model="event.organizer"
         label="Arrangör"
-        item-title="name"
-        item-value="name"
+        item-title="fullname"
+        item-value="fullname"
         :items="possibleHosts"
       ></v-select>
 
-      <v-btn type="submit" :color="color" :loading="loading"> Spara </v-btn>
+      <v-btn type="submit" :color="color" :loading="loading" style="bottom: 10px"> Spara </v-btn>
       <span :style="'color:' + $vuetify.theme.current.colors.error"> {{ this.error }} </span>
 
-      <v-btn v-if="!createNew" color="red" icon="mdi-delete" style="position: absolute; bottom: 10px; right: 10px;" @click="deleteItem"/>
+      <v-btn v-if="!createNew" color="red" icon="mdi-delete" style="position: absolute; bottom: 5px; right: 10px;" @click="deleteItem"/>
     </v-form>
   </v-card>
 
@@ -59,7 +60,7 @@ export default defineComponent({
   data: () => ({
     error: '',
     success: false,
-    possibleHosts: [] as Object,
+    possibleHosts: [] as any[],
     loading: false,
     event: {} as Event
   }),
@@ -110,6 +111,12 @@ export default defineComponent({
     },
 
     async put(){
+      for(let i = 0; i < this.possibleHosts.length; i++){
+        if(this.event.organizer == this.possibleHosts[i].fullname){
+          this.event.imagepath = this.possibleHosts[i].banner_url;
+          this.event.organizer = this.possibleHosts[i].id;
+        }
+      }
       const res = await fetch('http://localhost:8080/events/', {
         method: 'PUT',
         headers: {'content-type': 'application/json'},
@@ -125,6 +132,11 @@ export default defineComponent({
       this.success = true
     },
     async post(){
+      for(let i = 0; i < this.possibleHosts.length; i++){
+        if(this.event.organizer == this.possibleHosts[i].fullname){
+          this.event.organizer = this.possibleHosts[i].id;
+        }
+      }
       const res = await fetch('http://localhost:8080/events/', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -141,6 +153,7 @@ export default defineComponent({
     },
 
     async deleteItem(){
+      console.log(this.event.id)
       this.loading = true
       const res = await fetch('http://localhost:8080/events/' + this.event.id, {
           method: 'DELETE',

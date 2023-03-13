@@ -1,12 +1,13 @@
 <template>
   <v-card>
     <v-form @submit.prevent="submit">
-      <v-btn v-if="!createNew" color="red" icon="mdi-delete" style="position: absolute; bottom: 10px; right: 10px;" @click="deleteItem"/>
+      <!-- not necessary? -->
+      <!-- <v-btn v-if="!createNew" color="red" icon="mdi-delete" style="position: absolute; bottom: 5px; right: 10px;" @click="deleteItem"/> -->
       <v-text-field v-model="styret.name" label="Namn" color="primary"/>
       <v-text-field v-model="styret.email" label="email" color="primary"/>
-      <v-text-field v-model="styret.description" label="Beskrivning" color="primary"/>
       <v-text-field v-model="styret.imagepath" label="Bild-filepath" color="primary"/>
-      <v-btn :loading="loading" type="submit" :color="color"> Spara </v-btn> <span :style="'color: ' + $vuetify.theme.current.colors.error"> {{ this.error }}</span>
+      <v-textarea v-model="styret.description" label="Beskrivning" color="primary"/>
+      <v-btn style="bottom: 10px;" :loading="loading" type="submit" :color="color"> Spara </v-btn> <span :style="'color: ' + $vuetify.theme.current.colors.error"> {{ this.error }}</span>
     </v-form>
   </v-card>
 </template>

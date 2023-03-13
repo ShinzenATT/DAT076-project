@@ -56,9 +56,8 @@ export class EventService implements IEventService {
     }
 
 
-    async deleteEvent(
-        id : number
-    ) : Promise<void>{
+    async deleteEvent(id : number) : Promise<void>{
+        console.log(id)
         await events(db).delete({id});
     }
 

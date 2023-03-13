@@ -38,15 +38,19 @@
 import {defineComponent} from "vue";
 import Dropdown from "./Dropdown.vue"
 import DropdownSmall from "./DropdownSmall.vue"
-
-
-
-
+import {CommitteeListMember} from "../../types/committees";
 
   export default defineComponent({
     components: {Dropdown, DropdownSmall},
-
-
+    async created(){
+      const res: CommitteeListMember[] = await fetch('http://localhost:8080/committee').then(e => e.json())
+      this.routeArr.item2.content = [
+        ...res.filter(e => e.type !== 'utskott').map(e => ({routeName: e.name, link: '/kommitteer/' + e.name}))
+      ]
+      this.routeArr.item3.content = [
+        ...res.filter(e => e.type === 'utskott').map(e => ({routeName: e.name, link: '/kommitteer/' + e.name}))
+      ]
+    },
     data() {
       return {
 
@@ -57,33 +61,18 @@ import DropdownSmall from "./DropdownSmall.vue"
             content: [
               {routeName: 'Om H', link: '/about'},
               {routeName: 'Styret', link: '/styret'},
+              {routeName: 'Föreningslivet', link: '/kommitteer'},
               {routeName: 'Dokument', link: '/dokument'},
               {routeName: 'SAMO', link: '/SAMO'}
             ]
           },
           item2: {
             title: "Kommitteer",
-            content: [
-              {routeName: 'NollK', link: '/kommitteer/nollk'},
-              {routeName: 'DKV', link: '/kommitteer/dkv'},
-              {routeName: 'H6', link: '/kommitteer/h6'},
-              {routeName: 'pHoto', link: '/kommitteer/photo'},
-              {routeName: 'Rustet', link: '/kommitteer/rustet'},
-              {routeName: 'DSC', link: '/kommitteer/dsc'},
-              {routeName: 'HD', link: '/kommitteer/hd'},
-              {routeName: 'HKEX', link: '/kommitteer/hkex'},
-              {routeName: 'Lindholmsfestivalen', link: '/kommitteer/lindholmsfestivalen'},
-              {routeName: 'PubF', link: '/kommitteer/pubf'},
-              {routeName: 'SkHål', link: '/kommitteer/skhal'}
-            ]
+            content: [] as any[]
           },
           item3: {
             title: "Utskott",
-            content: [
-              {routeName: 'Studienämnden', link: '/utskott/snh'},
-              {routeName: 'Arbetsmarknadsutskottet', link: '/utskott/harm'},
-              {routeName: 'Jämlikhetsutskottet', link: '/utskott/jamh'}
-            ]
+            content: [] as any[]
           },
           item4: {
             title: "Kontakt",

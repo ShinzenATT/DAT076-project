@@ -76,6 +76,7 @@ export default defineComponent ({
 
 .styretName {
   text-align: center;
+  font-size: large;
 }
 
 .styretEmail{
@@ -88,5 +89,9 @@ export default defineComponent ({
 
 .styretImg {
   border-radius: 50px;
+}
+
+h2, h3 {
+  font-family: 'Lemon/Milk light', sans-serif;
 }
 </style>

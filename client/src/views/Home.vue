@@ -125,7 +125,8 @@
 
   <v-container style="text-align: center;
                         position: relative;
-                        top: -120px"
+                        top: -120px;
+                        max-width: 100%;"
 
                id="kommitteer"
   >
@@ -145,7 +146,7 @@
           <v-btn
             v-for="kommittee in kommitteerData"
             v-bind:key="kommittee"
-            style="width: 300px; height: 250px; margin: 50px;"
+            style="width:300px; height: 250px; margin: 50px;"
             flat
             :ripple="false"
             stacked

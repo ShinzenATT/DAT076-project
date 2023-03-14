@@ -6,7 +6,7 @@
         background: black;
         border: none"
   >
-  <v-container class="text-center" style="background-color: #E0218A;">
+  <v-container class="text-center" style="background-color: #E0218A; max-width: 100%;">
     <h1 style="font-family: 'Lemon/Milk', sans-serif; font-size: 60px; margin-bottom: 100px">Programteam</h1>
 
     <v-row>

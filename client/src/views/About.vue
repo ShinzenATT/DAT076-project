@@ -27,10 +27,10 @@
       <!-- Logos for each program -->
       <v-row
         justify="center"
-        class="mb-6"
+        class="mb-6 mx-16 pt-10"
         no-gutters
+        style="background-color: #E667AD;"
       >
-        <v-spacer></v-spacer>
 
         <!-- Designingenjör (DEI) -->
         <v-col>
@@ -85,7 +85,6 @@
           />
           <p>Ekonomi och <br> produktionsteknik <br> (EPI)</p>
         </v-col>
-        <v-spacer></v-spacer>
       </v-row>
 
       <!-- Map & Info about campus Lindholmen -->

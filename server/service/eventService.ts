@@ -1,28 +1,36 @@
+/**
+ * Event Service
+ *
+ * Defines methods for communication with the database
+ */
+
+// Imports
 import { Event, EventSerialized } from "../model/event";
 import db, {accounts, events} from "../db/database";
 import {greaterThan} from "@databases/pg-typed";
 import {start} from "repl";
 
+// Interface
 export interface IEventService {
-
     // Returns the array of all events
     getEvents() : Promise<Array<Event>>;
-
     // Creates a new event and adds it to the servers event-array
     createEvent(
         event: EventSerialized
     ) : Promise<Event>
-
+    // Edits an event
     editEvent(
         event: EventSerialized
     ) : Promise<Event>;
-
+    // Deletes the event with the given id
     deleteEvent(
         id : number
     ) : Promise<void>;
 }
 
+// Class definition
 export class EventService implements IEventService {
+
     async getEvents() : Promise<Array<Event>> {
         const res = await events(db).find({start: greaterThan(new Date())}).all();
         const organizers = (await accounts(db).find().select('name', 'id').all());
@@ -54,7 +62,6 @@ export class EventService implements IEventService {
             organizer: (await accounts(db).findOne({id: res.hostid}))?.name ?? 'unknown'
         } as Event);
     }
-
 
     async deleteEvent(id : number) : Promise<void>{
         console.log(id)

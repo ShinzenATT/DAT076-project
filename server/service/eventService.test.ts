@@ -1,8 +1,14 @@
+/**
+ * Test for the eventService class
+ */
+
+// Imports
 import { IEventService, makeEventService } from "./eventService";
 import { Event, EventSerialized } from "../model/event";
 import db, {accounts, events, sql} from "../db/database";
 import {Events} from "../db/generated";
 
+// Happens before each test
 beforeAll(async () => {
     await accounts(db).delete({})
     await accounts(db).insert({name: "user", email: "a@b.c", password: "test", id: 1})
@@ -10,17 +16,22 @@ beforeAll(async () => {
     await db.query(sql`ALTER SEQUENCE events_id_seq RESTART WITH 1;`)
 })
 
+// Happens after each test
 afterEach(async () => {
     await events(db).delete({})
     await db.query(sql`ALTER SEQUENCE events_id_seq RESTART WITH 1;`)
 });
 
+// Happens after all tests are done
 afterAll(async () => {
     await events(db).delete({})
     await db.query(sql`ALTER SEQUENCE events_id_seq RESTART WITH 1;`)
 })
 
+// Tests the 'getEvents()' method
 test("Get event", async () => {
+
+    // Creates a test-event
     const event ={
         id: 1,
         name: 'test',
@@ -31,6 +42,8 @@ test("Get event", async () => {
         location: "Lindholmen",
         imagepath: '/'
     };
+
+    // Creates an eventService object and inserts the test-event
     const service = makeEventService();
     await events(db).insert({
         id: event.id,
@@ -42,8 +55,9 @@ test("Get event", async () => {
         imagepath: event.imagepath,
         hostid: 1
     })
-    expect(await service.getEvents()).toStrictEqual([new Event(event)]);
 
+    // Checks that the test-event and the fetched event are the same
+    expect(await service.getEvents()).toStrictEqual([new Event(event)]);
 });
 
 /**
@@ -54,7 +68,11 @@ test("Get event", async () => {
  * An example here is line 69
  */
 
+
+// Tests the 'createEvent()' method
 test("Create event", async () => {
+
+    // Creates a test-event
     const event: EventSerialized = {
         id: 1,
         name: 'test',
@@ -65,9 +83,15 @@ test("Create event", async () => {
         location: "Lindholmen",
         imagepath: '/'
     };
+
+    // Creates an eventService object and creates the test-event
     const service = makeEventService();
     await service.createEvent(event);
+
+    // Sets the event organizer to 'user'
     event.organizer = 'user'
+
+    // Checks if fetched event and the test-event are the same
     expect((await service.getEvents())[0]).toStrictEqual(new Event(event));
 
     event.organizer = 1;
@@ -78,6 +102,7 @@ test("Create event", async () => {
 
 });
 
+// Tests the 'editEvent()' method
 test("Edit event", async () => {
     const event: EventSerialized ={
         id: 1,

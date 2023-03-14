@@ -1,3 +1,7 @@
+/**
+ * Account class with constructor
+ */
+
 export class Account{
     readonly id: number
     name: string

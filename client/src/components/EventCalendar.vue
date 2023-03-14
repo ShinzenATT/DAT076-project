@@ -7,8 +7,6 @@
       style="background-color: #E0218A; border: none"
     />
 
-
-
     <v-card
       v-if="currentDate"
       v-for="event in currEvents"

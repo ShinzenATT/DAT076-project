@@ -1,3 +1,5 @@
+<!-- Login-page for administrative control -->
+
 <template>
   <v-container>
     <v-alert v-if="error" type="error" variant="tonal" style="margin: 10px 0;"> {{ error }} </v-alert>

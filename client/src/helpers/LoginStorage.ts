@@ -1,3 +1,7 @@
+/**
+ * Helper for saving login-session
+ */
+
 import {LoginSession} from "../../types/Account";
 
 export class LoginStorage{

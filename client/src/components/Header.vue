@@ -2,6 +2,7 @@
 
 <template>
   <v-app-bar id="header" class="d-flex justify-md-space-between" elevation="0">
+
     <!-- Inserts the section-logo and routes (a click on) it to the 'Home'-view -->
       <router-link to="/">
         <v-img

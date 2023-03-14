@@ -7,4 +7,5 @@ The database link may be altered to match credentials. `database.ts` needs to be
 
 ### Table definitions
 Definitions are done in `000_server.sql` which is also loaded by the docker container.
-The container can be run by using `docker-compose up` at project root or using the `docker run`  command that targets the Dockerfile.
+The container can be run by using `docker-compose up` at project root or using the `docker run`  
+command that targets the Dockerfile.

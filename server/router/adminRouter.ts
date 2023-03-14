@@ -1,9 +1,17 @@
+/**
+ * Admin Router
+ *
+ * Express is used to respond to incoming GET, PUT, DELETE and POST HTTP-requests.
+ */
+
+// Imports
 import {CommitteeService} from "../service/committeeService";
 import {makeStyretService} from "../service/styretService";
 import {makeEventService} from "../service/eventService";
 import express, {Request, Response} from "express";
 import {AccountService} from "../service/accountService";
 
+// Constant variables
 const styretService = makeStyretService();
 const committeeService = new CommitteeService();
 const eventService = makeEventService();
@@ -11,6 +19,9 @@ const accountService = new AccountService();
 
 export const adminRouter = express.Router();
 
+/**
+ * Fetches Styret, Committees and Events
+ */
 adminRouter.get("/", async(
     req: Request<{}, {}, {}>,
     res: Response<Array<any> | String>
@@ -25,13 +36,15 @@ adminRouter.get("/", async(
             events : events
         }
         let sendValue = JSON.stringify(json)
-
         res.status(200).send(sendValue)
     } catch(e : any) {
         res.status(400).send(e)
     }
 });
 
+/**
+ * Fetches the specified object
+ */
 adminRouter.get('/:name', async (req: Request<{name : string}, {}, {}>, res: Response) => {
 switch (req.params.name) {
         case "styret":
@@ -52,6 +65,9 @@ switch (req.params.name) {
     }
 })
 
+/**
+ * Deletes the specified object
+ */
 adminRouter.delete('/:name/:id', async(
     req: Request<{name : string, id: string}, {}, {deleteAccount: boolean} | undefined>,
     res: Response
@@ -80,6 +96,9 @@ adminRouter.delete('/:name/:id', async(
         }
     });
 
+/**
+ * Edits the specified object
+ */
 adminRouter.put('/:name', async(
    req:Request<{name : string}, {}, any>,
    res:Response) => {
@@ -110,6 +129,3 @@ adminRouter.put('/:name', async(
         }
     }
 );
-
-
-

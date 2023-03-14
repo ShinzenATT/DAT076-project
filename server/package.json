@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "test": "jest --runInBand",
-    "build": "tsc && cp db/generated/schema.json dist/db/generated/"
+    "build": "tsc && cp api-spec.yml dist/"
   },
   "author": "",
   "license": "ISC",

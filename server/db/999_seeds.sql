@@ -32,7 +32,7 @@ INSERT INTO committees VALUES (15, 'Lindholmens Pubforening', 'pubf pubf pubf', 
 
 INSERT INTO styret VALUES (default, 'Jacob', 'Ordförande', 'ordf@htek.se', 'jag klagar på alla', '/styret/Jacob_cropped.jpg');
 INSERT INTO styret VALUES (default, 'Anja', 'Vice Ordförande', 'vordf@htek.se', 'jag klagar på kommittéer', '/styret/Anja_cropped.jpg');
-INSERT INTO styret VALUES (default, 'Casper', 'Kassör', 'kassor@htek.se', 'jag klagar på kassörer', '/styert/Casper_cropped.jpg');
+INSERT INTO styret VALUES (default, 'Casper', 'Kassör', 'kassor@htek.se', 'jag klagar på kassörer', '/styret/Casper_cropped.jpg');
 INSERT INTO styret VALUES (default, 'Moa', 'SAMO', 'samo@htek.se', 'jag klagar på lokalvården', '/styret/Moa_cropped.jpg');
 INSERT INTO styret VALUES (default, 'Leonard', 'Utbildningsansvarig', 'utb@htek.se', 'jag klagar på examinatorer', '/styret/Leonard_cropped.jpg');
 INSERT INTO styret VALUES (default, 'Billy', 'Arbetsmarknadsasnvarig', 'arb@htek.se', 'jag klagar på företag', '/styret/Adam_cropped.jpg');

@@ -17,7 +17,7 @@ export const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use('/', SwaggerUI.serve, SwaggerUI.setup(YAML.load('api-spec.yml')))
+app.use('/spec', SwaggerUI.serve, SwaggerUI.setup(YAML.load('api-spec.yml')))
 app.use("/events", eventRouter);
 app.use("/styret", styretRouter);
 app.use('/account', accountRouter);

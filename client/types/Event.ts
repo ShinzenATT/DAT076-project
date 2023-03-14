@@ -1,7 +1,5 @@
 /**
- * Events
- *
- * Specifies the variables for the event-type.
+ * Specifies the interface for Events
  */
 
 import {Committee} from "./committees";

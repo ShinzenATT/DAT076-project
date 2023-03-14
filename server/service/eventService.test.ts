@@ -8,7 +8,11 @@ import { Event, EventSerialized } from "../model/event";
 import db, {accounts, events, sql} from "../db/database";
 import {Events} from "../db/generated";
 
-// Happens before each test
+// Happens once before the tests run //
+// - Deletes all accounts
+// - Adds a test account
+// - Deletes all events
+// - Changes the sequence generator parameters
 beforeAll(async () => {
     await accounts(db).delete({})
     await accounts(db).insert({name: "user", email: "a@b.c", password: "test", id: 1})
@@ -16,13 +20,17 @@ beforeAll(async () => {
     await db.query(sql`ALTER SEQUENCE events_id_seq RESTART WITH 1;`)
 })
 
-// Happens after each test
+// Happens after each test //
+// - Deletes all events
+// - Changes the sequence generator parameters
 afterEach(async () => {
     await events(db).delete({})
     await db.query(sql`ALTER SEQUENCE events_id_seq RESTART WITH 1;`)
 });
 
-// Happens after all tests are done
+// Happens after all tests are done //
+// - Deletes all events
+// - Changes the sequence generator parameters
 afterAll(async () => {
     await events(db).delete({})
     await db.query(sql`ALTER SEQUENCE events_id_seq RESTART WITH 1;`)

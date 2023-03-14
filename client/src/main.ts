@@ -1,15 +1,14 @@
 /**
  * main.ts
  *
- * Bootstraps Vuetify and other plugins then mounts the App`
+ * Bootstraps Vuetify and other plugins then mounts the App
  */
 
-// Components
+// Importing components
 import App from './App.vue'
 // @ts-ignore
 import VCalendar from 'v-calendar';
 import 'v-calendar/dist/style.css';
-
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 

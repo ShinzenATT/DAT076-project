@@ -1,3 +1,8 @@
+/**
+ * Test for the app creation and routing
+ */
+
+// Imports
 import { Server } from "http";
 import { EventSerialized } from "./model/event";
 import { app } from "./start";
@@ -6,6 +11,11 @@ import db, {accounts, events, sql} from "./db/database";
 
 let server: Server;
 
+// Happens once before the tests run //
+// - Deletes all accounts
+// - Adds a test account
+// - Deletes all events
+// - Changes the sequence generator parameters
 beforeAll(async () => {
     await accounts(db).delete({})
     await accounts(db).insert({name: "user", email: "a@b.c", password: "test", id: 1})
@@ -13,6 +23,8 @@ beforeAll(async () => {
     await db.query(sql`ALTER SEQUENCE events_id_seq RESTART WITH 1;`)
 })
 
+// Happens before each test //
+// - Starts the server at port 8080
 beforeEach(() => {
     return new Promise((resolve, reject) => {
         server = app.listen(8080, () => {
@@ -22,6 +34,8 @@ beforeEach(() => {
     })
 });
 
+// Happens after each test //
+// - Closes the server
 afterEach(() => {
     return new Promise((resolve, reject) => {
     server.close(e => {
@@ -35,9 +49,11 @@ afterEach(() => {
     })
 });
 
+// Tests the event-routes //
 test("Event routes", async () => {
     expect(await (await fetch("http://localhost:8080/events")).json()).toStrictEqual([]);
 
+    // Creates an event
     const event: EventSerialized = {
         id: 1,
         name: 'test',

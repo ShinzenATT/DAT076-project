@@ -1,7 +1,5 @@
 /**
- * Styret
- *
- * Specifies the variables for the styret-type.
+ * Specifies the interface for Styret
  */
 
 export interface Styret{

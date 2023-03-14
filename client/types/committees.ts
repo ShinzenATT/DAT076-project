@@ -1,7 +1,5 @@
 /**
- * Committee & Committee member
- *
- * Specifies the variables for the committee-type and it's members
+ * Specifies the interface for Committee & CommitteeListMember
  */
 
 export interface CommitteeListMember {

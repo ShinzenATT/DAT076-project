@@ -1,3 +1,8 @@
+/**
+ * Imports all necessary routers and other parts and exports it as the variable 'app'
+ * This can and is then imported as the single variable, in 'index.ts'
+ */
+
 import express from "express";
 import eventRouter from "./router/eventRouter";
 import accountRouter from "./router/accountRouter";

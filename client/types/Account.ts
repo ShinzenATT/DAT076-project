@@ -1,7 +1,5 @@
 /**
- * Account & Login session
- *
- * Specifies the variables for the account-type and login session
+ * Specifies the interface for Account & LoginSession
  */
 
 export interface Account {

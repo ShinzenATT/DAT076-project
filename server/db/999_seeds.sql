@@ -35,7 +35,7 @@ INSERT INTO styret VALUES (default, 'Anja', 'Vice Ordförande', 'vordf@htek.se',
 INSERT INTO styret VALUES (default, 'Casper', 'Kassör', 'kassor@htek.se', 'jag klagar på kassörer', '/styret/Casper_cropped.jpg');
 INSERT INTO styret VALUES (default, 'Moa', 'SAMO', 'samo@htek.se', 'jag klagar på lokalvården', '/styret/Moa_cropped.jpg');
 INSERT INTO styret VALUES (default, 'Leonard', 'Utbildningsansvarig', 'utb@htek.se', 'jag klagar på examinatorer', '/styret/Leonard_cropped.jpg');
-INSERT INTO styret VALUES (default, 'Billy', 'Arbetsmarknadsasnvarig', 'arb@htek.se', 'jag klagar på företag', '/styret/Adam_cropped.jpg');
+INSERT INTO styret VALUES (default, 'Billy', 'Arbetsmarknad', 'arb@htek.se', 'jag klagar på företag', '/styret/Adam_cropped.jpg');
 INSERT INTO styret VALUES (default, 'Emil', 'Informationsansvarig', 'info@htek.se', 'jag klagar på information', '/styret/Emil_cropped.jpg');
 
 INSERT INTO events VALUES (default, 'Bastu time', current_timestamp + interval '1 day',

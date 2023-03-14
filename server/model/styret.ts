@@ -1,3 +1,7 @@
+/**
+ * Styret class with constructor
+ */
+
 export class Styret {
     name : string;
     post: string;

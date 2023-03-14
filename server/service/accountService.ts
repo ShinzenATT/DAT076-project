@@ -1,8 +1,16 @@
+/**
+ * Account Service
+ *
+ * Defines methods for communication with the database
+ */
+
+// Imports
 import {Account} from "../model/account";
 import db, {accounts, sessiontoken} from "../db/database";
 import {Accounts_InsertParameters} from "../db/generated";
 import {lessThan} from "@databases/pg-typed";
 
+// Interface
 export interface IAccountService{
     login(email: string, password: string): Promise<{token: string, account: Account}>
     getAccountInfo(id: number): Promise<Account>
@@ -13,7 +21,9 @@ export interface IAccountService{
     deleteAccount(id: number): Promise<void>
 }
 
+// Class definition
 export class AccountService implements IAccountService{
+
     async checkToken(token: string): Promise<number | null> {
         await sessiontoken(db).delete({expires: lessThan(new Date())})
         return (await sessiontoken(db).findOne({token}))?.account ?? null;
@@ -26,8 +36,6 @@ export class AccountService implements IAccountService{
             password: undefined
         })
     }
-
-
 
     async getAccountInfo(id: number): Promise<Account> {
         const res = await accounts(db).findOneRequired({id})
@@ -42,9 +50,7 @@ export class AccountService implements IAccountService{
         if(account == null){
             throw new Error("credentials did not match")
         }
-
         const token = await sessiontoken(db).insert({account: account.id})
-
         return {
             token: token[0].token,
             account: new Account({
@@ -59,7 +65,6 @@ export class AccountService implements IAccountService{
         if(res.length === 0){
             throw new Error('Account not found')
         }
-
         return new Account({
             ...res[0],
             password: undefined

@@ -1,5 +1,9 @@
 import {Events} from "../db/generated";
 
+/**
+ * Event class with constructor
+ */
+
 export class Event {
     organizer : string;
     name : string;
@@ -18,6 +22,8 @@ export class Event {
         this.imagepath = data.imagepath;
         this.id = data.id;
 
+        // If start or stop date is in string-form it gets translated to JavaScript date format //
+        // Throws an error if string is not valid format //
         if(typeof data.start === "string"){
             let d = new Date(data.start);
             if(isNaN(d.getTime())){

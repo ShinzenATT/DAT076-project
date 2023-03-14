@@ -1,19 +1,26 @@
+/**
+ * Committee Service
+ *
+ * Defines methods for communication with the database
+ */
+
+// Imports
 import {Committee} from "../model/committee";
 import db, {accounts, committees} from "../db/database";
 import {anyOf} from "@databases/pg-typed";
 import {Styret} from "../model/styret";
 
+// Interface
 export interface ICommitteeService{
     getCommittees(): Promise<{name: string, type: string, logo_url: string | null }[]>
-
     getCommitteeInfo(name: string): Promise<Committee>
-
     editCommittee(data: Committee): Promise<Committee>
-
     removeCommittee(id: number, deleteAccount:boolean): Promise<void>
 }
 
+// Class definition
 export class CommitteeService implements ICommitteeService{
+
     async editCommittee(data: Committee): Promise<Committee> {
         const acc = (await accounts(db).update({id: data.id}, {name: data.name, email: data.email}))[0]
         const res = await committees(db).insertOrUpdate(['id'], {
@@ -51,7 +58,6 @@ export class CommitteeService implements ICommitteeService{
     async getCommittees(): Promise<{ name: string; type: string; logo_url: string | null }[]> {
         const data = await committees(db).find().select("id", "logo_url", "type", "banner_url").all()
         const names = await accounts(db).find({id: anyOf(data.map(e => e.id))}).select("id", "name").all()
-
         return data.map(e => {
             return {
                 name: names.find(n => n.id === e.id)?.name ?? 'unknown',
@@ -76,5 +82,4 @@ export class CommitteeService implements ICommitteeService{
             await accounts(db).delete({id, admin: false})
         }
     }
-
 }

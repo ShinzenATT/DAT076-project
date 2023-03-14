@@ -1,5 +1,9 @@
 import {Associationtype} from "../db/generated/_enums";
 
+/**
+ * Committee class with constructor
+ */
+
 export class Committee{
     readonly id: number
     name: string

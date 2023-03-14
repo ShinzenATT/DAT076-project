@@ -1,3 +1,5 @@
+<!-- Admin panel -->
+
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" :rail="$vuetify.display.md || $vuetify.display.sm" :permanent="$vuetify.display.smAndUp" expand-on-hover>

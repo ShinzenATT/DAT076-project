@@ -1,14 +1,19 @@
+<!-- Footer implementation -->
+
 <template>
 
+  <!-- The beautiful section color as background -->
   <v-footer color="#e0218a">
     <v-responsive class="d-flex align-center text-center fill-height">
 
+      <!-- And the Chalmers logo with section text-->
       <v-img
         contain
         height="120"
         src="@/assets/H-Styrets-logga.png"
       />
 
+      <!-- Adress, email, organization number & copyright. Centered -->
       <v-col cols="8" class="d-flex align-content-center mx-auto">
         <h4 style="color: white" class="mx-auto">
           Campus Lindholmen H-sektionen, 412 96 Göteborg |
@@ -24,9 +29,7 @@
 
       </v-col>
 
-
     </v-responsive>
-
 
   </v-footer>
 

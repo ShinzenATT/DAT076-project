@@ -12,13 +12,13 @@
           <v-img :src="committee.logo_url ?? undefined" max-height="200" style="width: 100%;"/>
         </v-col>
         <v-col>
-          <v-card-title style="font-family: 'Lemon/Milk', sans-serif"> <h1> {{ committee.fullname }} </h1> </v-card-title>
+          <v-card-title id="pageTitle">{{ committee.fullname }} </v-card-title>
           <v-card-subtitle v-if="committee.fullname !== committee.name"><h3> {{ committee.name }} </h3></v-card-subtitle>
           <v-card-actions style="flex-wrap: wrap;">
-            <v-btn v-if="committee.website" prepend-icon="mdi-web" variant="outlined" :href="'https://' + committee.website"> {{ committee.website }} </v-btn>
-            <v-btn prepend-icon="mdi-email" variant="outlined" :href="'mailto:' + committee.email"> {{ committee.email }} </v-btn>
-            <v-btn v-if="committee.instagram" prepend-icon="mdi-instagram" variant="outlined" color="purple" :href="'https://instagram.com/' + committee.instagram"> @{{committee.instagram}} </v-btn>
-            <v-btn v-if="committee.facebook" prepend-icon="mdi-facebook" variant="outlined" :href="committee.facebook" color="blue"> Facebook </v-btn>
+            <v-btn class="redirectButton" v-if="committee.website" prepend-icon="mdi-web" variant="outlined" :href="'https://' + committee.website"> {{ committee.website }} </v-btn>
+            <v-btn class="redirectButton" prepend-icon="mdi-email" variant="outlined" :href="'mailto:' + committee.email"> {{ committee.email }} </v-btn>
+            <v-btn class="redirectButton" v-if="committee.instagram" prepend-icon="mdi-instagram" variant="outlined" color="purple" :href="'https://instagram.com/' + committee.instagram"> @{{committee.instagram}} </v-btn>
+            <v-btn class="redirectButton" v-if="committee.facebook" prepend-icon="mdi-facebook" variant="outlined" :href="committee.facebook" color="blue"> Facebook </v-btn>
           </v-card-actions>
         </v-col>
       </v-row>
@@ -34,9 +34,25 @@
     flex-grow: 1;
   }
 
+  .redirectButton {
+    margin: 2px !important;
+  }
+
   h1, h2, h3, h5, h6 {
     font-family: 'Lemon/Milk', sans-serif;
   }
+
+  #pageTitle {
+    font-family: 'Lemon/Milk', sans-serif;
+    font-size: xx-large;
+  }
+
+  @media only screen and (max-width: 716px) {
+    #pageTitle {
+      font-size: medium;
+    }
+  }
+
 </style>
 
 <script lang="ts">

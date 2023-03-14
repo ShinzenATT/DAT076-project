@@ -1,0 +1,560 @@
+openapi: '3.0.2'
+info:
+  title: H-TEK API
+  version: '0.1'
+servers:
+  - url: http://localhost:8080
+paths:
+  /events:
+    get:
+      summary: Get a list of events
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+    post:
+      summary: Create a new event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewEvent'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+    put:
+      summary: Update an existing event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEvent'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '404':
+          description: Not found
+  /events/{eventId}:
+    parameters:
+      - in: path
+        name: eventId
+        required: true
+        schema:
+          type: integer
+    delete:
+      summary: Delete an existing event by ID
+      responses:
+        '200':
+          description: OK
+  /accounts/login:
+    post:
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Bad Request (Credential Missmatch)
+          content:
+            application/json:
+              schema:
+                type: string
+  /accounts/register:
+    post:
+      summary: Creates a new account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewAccount'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountNoPassword'
+  /styret:
+    get:
+      summary: Get all Styret members
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Styret'
+    put:
+      summary: Update an existing Styret member
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Styret'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Styret'
+        '404':
+          description: Styret object not found
+    post: 
+      summary: Update an existing Styret member
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Styret'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Styret'
+        '400':
+          description: Invalid request body
+  /styret/{id}:
+    delete:
+      summary: Delete a specific styret member
+      description: Deletes the specified styret member from the database.
+      parameters:
+        - in: path
+          name: id
+          description: The id of the committee to delete.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: No Content
+  /committee:
+    get:
+      summary: Get a list of committees
+      description: Returns an array of objects containing name, type, and logo_url properties for all committees.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    type:
+                      $ref: '#/components/schemas/AssociationType'
+                    logo_url:
+                      type: string
+                      nullable: true
+    post:
+      summary: Create a new committee
+      description: Creates a new committe that is connected to a existing account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Committee'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Committee'
+        '400':
+          description: Invalid data in request body
+          content:
+            application/json:
+              schema:
+                type: string
+    put:
+      summary: Update a specific committee
+      description: Updates an existing committee based on the id in request body.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCommittee'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Committee'
+        '400':
+          description: When the request boy includes invalid database.
+          content:
+            application/json:
+              schema:
+                type: string
+  /committee/{name}:
+    get:
+      summary: Get details for a specific committee
+      description: Returns an object containing all properties for the specified committee.
+      parameters:
+        - in: path
+          name: name
+          description: The name of the committee to retrieve.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Committee'
+        '404':
+          description: Unknown committee name.
+  /committee/{id}:
+    delete:
+      summary: Delete a specific committee
+      description: Deletes the specified committee from the database.
+      parameters:
+        - in: path
+          name: id
+          description: The id of the committee to delete.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: No Content
+  /admin/events:
+    $ref: '#/paths/~1events'
+  /admin/events/{eventId}:
+    $ref: '#/paths/~1events~1{eventId}'
+  /admin/styret:
+    $ref: '#/paths/~1styret'
+  /admin/committee/:
+    $ref: '#/paths/~1committee'
+  /admin/committee/{id}:
+    $ref: '#/paths/~1committee~1{id}'
+  /admin/accounts:
+    post:
+      $ref: '#/paths/~1accounts~1register/post'
+    get:
+      summary: Get all available accounts.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/AccountNoPassword'
+    put:
+      summary: Edits a account based on the id in body.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountNoPassword'
+        '400':
+          description: Invalid data in request body.
+          content:
+            application/json:
+              schema:
+                type: string
+  /admin/accounts/{id}:
+    summary: Deletes an account with the associated id.
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+    delete:
+      responses:
+        '200':
+          description: OK
+
+components:
+  schemas:
+    Event:
+      type: object
+      properties:
+        organizer:
+          type: string
+        name:
+          type: string
+        location:
+          type: string
+        start:
+          type: string
+          format: date-time
+        stop:
+          type: string
+          format: date-time
+        description:
+          type: string
+        imagepath:
+          type: string
+        id:
+          type: integer
+          readOnly: true
+    NewEvent:
+      type: object
+      required:
+        - organizer
+        - name
+        - location
+        - start
+        - stop
+      properties:
+        organizer:
+          type: integer
+        name:
+          type: string
+        location:
+          type: string
+        start:
+          type: string
+          format: date-time
+        stop:
+          type: string
+          format: date-time
+        description:
+          type: string
+        imagepath:
+          type: string
+    UpdateEvent:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+        organizer:
+          type: integer
+        name:
+          type: string
+        location:
+          type: string
+        start:
+          type: string
+          format: date-time
+        stop:
+          type: string
+          format: date-time
+        description:
+          type: string
+        imagepath:
+          type: string
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        admin:
+          type: boolean
+        password:
+          type: string
+      required:
+        - name
+        - email
+        - password
+    NewAccount:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        admin:
+          type: boolean
+        password:
+          type: string
+      required:
+        - name
+        - email
+        - password
+    AccountNoPassword:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+        email:
+          type: string
+        admin:
+          type: boolean
+      required:
+        - name
+        - email
+        - id
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+        - email
+        - password
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          format: uuid
+        account:
+          $ref: '#/components/schemas/AccountNoPassword'
+    Styret:
+      type: object
+      properties:
+        name:
+          type: string
+        post:
+          type: string
+        email:
+          type: string
+        description:
+          type: string
+        imagepath:
+          type: string
+          nullable: true
+        id:
+          type: integer
+      required:
+        - name
+        - post
+        - email
+        - description
+    Committee:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+        fullname:
+          type: string
+          nullable: true
+        type:
+          $ref: '#/components/schemas/AssociationType'
+        email:
+          type: string
+        description:
+          type: string
+          nullable: true
+        facebook:
+          type: string
+          nullable: true
+        instagram:
+          type: string
+          nullable: true
+        website:
+          type: string
+          nullable: true
+        logo_url:
+          type: string
+          nullable: true
+        banner_url:
+          type: string
+          nullable: true
+      required:
+        - name
+        - type
+        - email
+    UpdateCommittee:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        fullname:
+          type: string
+          nullable: true
+        type:
+          $ref: '#/components/schemas/AssociationType'
+        email:
+          type: string
+        description:
+          type: string
+          nullable: true
+        facebook:
+          type: string
+          nullable: true
+        instagram:
+          type: string
+          nullable: true
+        website:
+          type: string
+          nullable: true
+        logo_url:
+          type: string
+          nullable: true
+        banner_url:
+          type: string
+          nullable: true
+      required:
+        - name
+        - type
+        - email
+    AssociationType:
+      type: string
+      enum:
+        - kommittee
+        - utskott
+        - forening
+        - utomstaende
+
+
+        

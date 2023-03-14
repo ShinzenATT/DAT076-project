@@ -10,11 +10,14 @@ import committeeRouter from "./router/committeeRouter";
 import cors from "cors";
 import {styretRouter} from "./router/styretRouter";
 import {adminRouter} from "./router/adminRouter";
+import SwaggerUI from 'swagger-ui-express'
+import YAML from "yamljs";
 
 export const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use('/', SwaggerUI.serve, SwaggerUI.setup(YAML.load('api-spec.yml')))
 app.use("/events", eventRouter);
 app.use("/styret", styretRouter);
 app.use('/account', accountRouter);
